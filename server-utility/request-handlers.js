@@ -12,8 +12,8 @@ var getNodes = function(req, res, next) {
 
   session.run("MATCH (n) RETURN n LIMIT 100")
     .then(function(result) {
-      console.log('chears to the neo4j', result);
-      console.log('here are the results from a get all request: ', result)
+      // console.log('chears to the neo4j', result);
+      // console.log('here are the results from a get all request: ', result)
       session.close();
       res.send(result);
     })
@@ -33,7 +33,9 @@ var generateCypherQuery = function(reqBody) {
 var postNode = function(req, res, next) {
   var session = driver.session();
 
+  console.log('what is the req.body from axios post request???', req.body)
   var CQ = generateCypherQuery(req.body);
+  console.log('what is the CQQQQ????', CQ)
   session.run(CQ)
     .then(function(result) {
       session.close();
