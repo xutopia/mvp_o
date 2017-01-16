@@ -4,6 +4,7 @@
   "description": "MVP project using graph database",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "test"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "express": "^4.14.0",
     "express-partials": "^0.3.0",
     "neo4j-driver": "^1.0.5",
+    "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
