@@ -7,18 +7,45 @@ var graphenedbPass = process.env.GRAPHENEDB_BOLT_PASSWORD || "neo4j";
 
 var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
 
-exports.getNodes = function(req, res, next) {
+var getNodes = function(req, res, next) {
   var session = driver.session();
 
-  session.run("CREATE (alice:PERSON {name: {nameParam} }) RETURN alice", {nameParam: 'Alice'})
+  session.run("MATCH (n) RETURN n LIMIT 100")
     .then(function(result) {
       console.log('chears to the neo4j', result);
+      console.log('here are the results from a get all request: ', result)
       session.close();
+      res.send(result);
     })
     .catch(function(error) {
       console.log(error);
     })
-
-
-  res.send('successful get request');
 }
+
+var generateCypherQuery = function(reqBody) {
+  //take the request body from the client
+  //parse out the good stuff
+  //return the cypher query as string
+
+  //ex: "CREATE (alice:PERSON {name: {nameParam} }) RETURN alice", {nameParam: 'Alice'}"
+}
+
+var postNode = function(req, res, next) {
+  var session = driver.session();
+
+  var CQ = generateCypherQuery(req.body);
+  session.run(CQ)
+    .then(function(result) {
+      session.close();
+      res.status(201).send('successful post')
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+}
+
+
+
+
+exports.getNodes = getNodes;
+exports.postNode = postNode;
