@@ -10,7 +10,7 @@ var port = process.env.PORT || 8080;
 app.use(express.static(__dirname + '/front-end'))
 
 //create something for a 'GET every node' request to graphene
-app.get('/nodes', util.getNodes);
+app.get('/node', util.getNodes);
 
 //create something for a 'POST' request to graphene
 app.post('/nodes', function(req, res) {
