@@ -5,10 +5,8 @@ import {Link} from 'react-router';
 
 class NodesNew extends Component {
   render() {
-    const {fields: {name, owe}, handleSubmit} = this.props;
     return (
-      <div>Some text
-      </div>
+      <div>some text</div>
     );
   }
 }
