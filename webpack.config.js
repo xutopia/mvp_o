@@ -3,7 +3,7 @@ var Path = require('path');
 module.exports = {
   entry: './front-end/index.js',
   output: {
-    path: Path.join(__dirname, './front-end/'),
+    path: Path.join(__dirname, '/public'),
     filename: 'bundle.js'
   },
   module: {
