@@ -7,7 +7,7 @@ import NodesShow from './components/nodes_show';
 
 export default (
   <Route path="/" component={App} >
-    <IndexRoute component={NodesNew} />
+    <IndexRoute component={NodesShow} />
     <Route path='nodes/show' component={NodesShow} />
   </Route>
 );
