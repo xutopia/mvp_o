@@ -23,7 +23,7 @@
   "dependencies": {
     "alchemy": "0.0.8",
     "axios": "^0.15.3",
-    "babel": "^6.5.2",
+    "babel-core": "^6.21.0",
     "babel-preset-stage-1": "^6.16.0",
     "body-parser": "^1.15.2",
     "ejs": "^2.5.5",
