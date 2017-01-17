@@ -42,10 +42,8 @@ class NodesShow extends Component {
                 <th>Nodes</th>
               </tr>
             </thead>
-            <tbody>
-              {this.props.length === 0 ? '' : this.renderNodes(this.props)}
-            </tbody>
           </table>
+              {this.props.length === 0 ? '' : this.renderNodes(this.props)}
       </div>
     )
   }

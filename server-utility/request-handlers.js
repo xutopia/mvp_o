@@ -1,6 +1,6 @@
 //Create utility functions for making the requests to grapheneDB
 var neo4j = require('neo4j-driver').v1;
-var neo4jCreds = require('../graphene_creds');
+var neo4jCreds = require('../graphene_Creds');
 
 var graphenedbURL = neo4jCreds.URL || "http://localhost:7474";
 var graphenedbUser = neo4jCreds.USN || "neo4j";
