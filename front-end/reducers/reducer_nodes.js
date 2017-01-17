@@ -5,7 +5,9 @@ const INITIAL_STATE = {nodes: null};
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_NODES:
-      return {...state, nodes: action.payload};
+      console.log('here is the payload from a get request', action.payload.data);
+      return {...state, nodes: action.payload.data};
+      // return action.payload.data;
     default:
       return state;
   }

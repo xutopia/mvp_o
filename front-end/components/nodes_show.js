@@ -17,11 +17,10 @@ class NodesShow extends Component {
     if(!this.props) {
       return (<div></div>)
     }
-    console.log(this.props);
+    console.log('here are the props', this.props);
 
     return (
       <div>
-        Something in here
         <button onClick={this.getData.bind(this)}>Show Nodes</button>
       </div>
     )
