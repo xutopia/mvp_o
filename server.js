@@ -18,7 +18,7 @@ app.use('/public', express.static(Path.join(__dirname, '/public')))
 //   res.sendfile('bundle.js');
 // })
 //create something for a 'POST' request to graphene
-app.post('/api/nodes', util.postNode);
+app.post('/api/node', util.postNode);
 
 //create something for a 'GET every node' request to graphene
 app.get('/api/nodes', util.getNodes);

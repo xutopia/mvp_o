@@ -1,10 +1,10 @@
 // (hopefully) can get Alchemy working to display graph
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import Alchemy from 'alchemy';
+import {fetchNodes} from '../actions/index';
 
-export default class NodesShow extends Component {
+class NodesShow extends Component {
   render() {
     return (
       <div>
@@ -13,3 +13,12 @@ export default class NodesShow extends Component {
     )
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    nodes: state.nodes.nodes
+  }
+}
+
+export default connect(mapStateToProps, {fetchNodes})(NodesShow);

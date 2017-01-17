@@ -1,9 +1,8 @@
 // class with redux-form to make queries
 import React, {Component} from 'react';
-import {reduxForm} from 'redux-form';
-import {Link} from 'react-router';
+import {connect} from 'react-redux';
 
-class NodesNew extends Component {
+export default class NodesNew extends Component {
   render() {
     return (
       <div>some text</div>
