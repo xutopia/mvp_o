@@ -12,6 +12,7 @@ var getNodes = function(req, res, next) {
 
   session.run("MATCH (n) RETURN n LIMIT 100")
     .then(function(result) {
+      console.log('successful fetching of the nodes')
       // console.log('chears to the neo4j', result);
       // console.log('here are the results from a get all request: ', result)
       session.close();

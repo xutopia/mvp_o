@@ -6,8 +6,8 @@ export const MAKE_NODE = 'MAKE_NODE';
 const URL = '/api/node';
 
 export function fetchNodes() {
-  const request = axios.get(`${URL}s`);
-
+  const request = axios.get('/api/nodes');
+  console.log('here is the request', request);
   return {
     type: FETCH_NODES,
     payload: request

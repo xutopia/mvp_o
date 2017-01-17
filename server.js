@@ -24,5 +24,10 @@ app.post('/api/node', util.postNode);
 app.get('/api/nodes', util.getNodes);
 
 
+// app.get('/api/nodes', function(req, res) {
+//   res.send(200);
+// });
+
+
 app.listen(port);
 console.log('Server listening on port: ', port);
