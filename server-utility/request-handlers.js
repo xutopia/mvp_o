@@ -13,9 +13,6 @@ var getNodes = function(req, res, next) {
 
   session.run("MATCH (n) RETURN n LIMIT 100")
     .then(function(result) {
-      console.log('successful fetching of the nodes', result)
-      // console.log('chears to the neo4j', result);
-      // console.log('here are the results from a get all request: ', result)
       session.close();
       res.json(result);
     })
@@ -35,10 +32,7 @@ var generateCypherQuery = function(reqBody) {
 var postNode = function(req, res, next) {
   var session = driver.session();
 
-  console.log('what is the req.body from axios post request???', req.body)
-  var CQ = generateCypherQuery(req.body);
-  console.log('what is the CQQQQ????', CQ)
-  session.run(CQ)
+  session.run("CREATE (alice:NUMBER {value: {num} })", {num: Math.random() * 1000})
     .then(function(result) {
       session.close();
       res.status(201).send('successful post')

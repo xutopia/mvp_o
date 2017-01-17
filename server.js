@@ -12,21 +12,13 @@ app.use(express.static(Path.join(__dirname, '/front-end')))
 
 
 app.use('/public', express.static(Path.join(__dirname, '/public')))
-// app.use('/node_modules', express.static(Path.join(__dirname, '/node_modules')));
 
-// app.get('/', function(req, res) {
-//   res.sendfile('bundle.js');
-// })
 //create something for a 'POST' request to graphene
 app.post('/api/node', util.postNode);
 
 //create something for a 'GET every node' request to graphene
 app.get('/api/nodes', util.getNodes);
 
-
-// app.get('/api/nodes', function(req, res) {
-//   res.send(200);
-// });
 
 
 app.listen(port);

@@ -21536,7 +21536,7 @@
 
 	var _nodes_new2 = _interopRequireDefault(_nodes_new);
 
-	var _nodes_show = __webpack_require__(218);
+	var _nodes_show = __webpack_require__(244);
 
 	var _nodes_show2 = _interopRequireDefault(_nodes_show);
 
@@ -21593,7 +21593,7 @@
 
 	var _reactRedux = __webpack_require__(180);
 
-	var _index = __webpack_require__(228);
+	var _index = __webpack_require__(218);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23876,2814 +23876,11 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(180);
-
-	var _alchemy = __webpack_require__(219);
-
-	var _alchemy2 = _interopRequireDefault(_alchemy);
-
-	var _index = __webpack_require__(228);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // (hopefully) can get Alchemy working to display graph
-
-
-	var NodesShow = function (_Component) {
-	  _inherits(NodesShow, _Component);
-
-	  function NodesShow() {
-	    _classCallCheck(this, NodesShow);
-
-	    return _possibleConstructorReturn(this, (NodesShow.__proto__ || Object.getPrototypeOf(NodesShow)).apply(this, arguments));
-	  }
-
-	  _createClass(NodesShow, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.fetchNodes();
-	      console.log('this.props', this.props);
-	    }
-	  }, {
-	    key: 'getData',
-	    value: function getData() {
-	      this.props.fetchNodes();
-	    }
-	  }, {
-	    key: 'renderNodes',
-	    value: function renderNodes(nodes) {
-	      console.log('inside renderNodes, checking out props', nodes.nodes.records);
-	      var nodes = JSON.stringify(nodes.nodes.records);
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        nodes
-	      );
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      console.log('should appear when data is received', nextProps);
-	      this.renderNodes(nextProps);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      if (!this.props) {
-	        return _react2.default.createElement('div', null);
-	      }
-	      console.log('here are the props', this.props);
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.getData.bind(this) },
-	          'Show Nodes'
-	        ),
-	        _react2.default.createElement(
-	          'table',
-	          null,
-	          _react2.default.createElement(
-	            'thead',
-	            null,
-	            _react2.default.createElement(
-	              'tr',
-	              null,
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Nodes'
-	              )
-	            )
-	          )
-	        ),
-	        this.props.length === 0 ? '' : this.renderNodes(this.props)
-	      );
-	    }
-	  }]);
-
-	  return NodesShow;
-	}(_react.Component);
-
-	function mapStateToProps(state) {
-	  return {
-	    nodes: state.nodes.nodes
-	  };
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchNodes: _index.fetchNodes })(NodesShow);
-
-/***/ },
-/* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/*
-	 *   “Medicine, and Law, and Philosophy -
-	 *    You've worked your way through every school,
-	 *    Even, God help you, Theology,
-	 *    And sweated at it like a fool.
-	 *    Why labour at it any more?
-	 *    You're no wiser now than you were before.
-	 *    You're Master of Arts, and Doctor too,
-	 *    And for ten years all you've been able to do
-	 *    Is lead your students a fearful dance
-	 *    Through a maze of error and ignorance.
-	 *    And all this misery goes to show
-	 *    There's nothing we can ever know.
-	 *    Oh yes you're brighter than all those relics,
-	 *    Professors and Doctors, scribblers and clerics,
-	 *    No doubts or scruples to trouble you,
-	 *    Defying hell, and the Devil too.
-	 *    But there's no joy in self-delusion;
-	 *    Your search for truth ends in confusion.
-	 *    Don't imagine your teaching will ever raise
-	 *    The minds of men or change their ways.
-	 *    And as for worldly wealth, you have none -
-	 *    What honour or glory have you won?
-	 *    A dog could stand this life no more.
-	 *    And so I've turned to magic lore;
-	 *    The spirit message of this art
-	 *    Some secret knowledge might impart.
-	 *    No longer shall I sweat to teach
-	 *    What always lay beyond my reach;
-	 *    I'll know what makes the world revolve,
-	 *    Its mysteries resolve,
-	 *    No more in empty words I'll deal -
-	 *    Creation's wellsprings I'll reveal!”
-	 *            ― Johann Wolfgang von Goethe, Faust
-	 *
-	 *
-	 * Table of content:
-	 *
-	 * [section_properties]
-	 *      The public properties
-	 *
-	 * [section_utils]
-	 *      Utility methods (check id input is of type xy, mix, override, ...)
-	 *
-	 * [section_path]
-	 *      A submodule to manage file paths
-	 *
-	 * [section_formula]
-	 *      A submodule to manage formulas
-	 */
-	(function () {
-	    'use strict';
-
-	    var aliases = {};
-	    var potions = {};
-	    var isNode = typeof process !== 'undefined';
-	    var isBrowser = typeof window !== 'undefined';
-
-	    /**
-	     * helper method to register an alias
-	     * @private
-	     */
-	    function registerAlias(alias, fullname) {
-	        if (aliases[alias]) {
-	            // it should not be possible to override an alias because
-	            // - it is easy to override another by accident because of the missing namespaces
-	            // - it is possible to override another potion/formula by using the fullname the alias
-	            //   then refers to the new one
-	            throw 'Alias "' + alias + '" already used by "' + aliases[alias] + '"';
-	        }
-	        aliases[alias] = fullname;
-	    }
-
-	    /**
-	     * helper to turn the first letter of a string to upper case
-	     * @private
-	     */
-	    function ucFirst(s) {
-	        return alchemy.isString(s) ? s.charAt(0).toUpperCase() + s.substr(1, s.length) : '';
-	    }
-
-	    /**
-	     * The main units of alchemy.js are the "potions" of course. They are
-	     * the javascript prototypes which can be used to create other instances.
-	     * Each potions provides a <code>create</code> method.
-	     *
-	     * The function returns the respective potion. If there has no potion
-	     * with this name been created yet then it will be brewed based on the
-	     * available formulas. If no such formula is available then alchemy
-	     * will try loading one (this works synchronusly!).
-	     *
-	     * @name alchemy
-	     * @namespace
-	     * @function
-	     *
-	     * @param {String} potionName The identifier of the potion
-	     * @return Object The potion
-	     */
-	    var alchemy = function (potionName) {
-	        var name = aliases[potionName] || potionName;
-	        var potion = potions[name];
-
-	        if (potion) {
-	            return potion;
-	        }
-
-	        var formula = alchemy.formula.get(name);
-	        if (formula) {
-	            return alchemy.brew(formula);
-	        }
-
-	        if (alchemy.platform.isBrowser) {
-	            return window[name];
-	        }
-
-	        return null;
-	    };
-
-	    function Potion(formula) {
-	        this.brewed = null;
-	        this.formula = formula;
-	    }
-
-	    Potion.prototype.brew = function brew(cfg) {
-	        if (this.brewed) {
-	            return this.brewed;
-	        }
-
-	        this.brewed = this.formula(alchemy);
-	        return this.brewed;
-	    };
-
-	    if (true) {
-	        module.exports = alchemy;
-	    }
-
-	    if (typeof window !== 'undefined') {
-	        var orgRequire = window.require;
-	        window.require = function (pname) {
-	            var name = pname.replace(/^.*\//, '').replace(/\..*$/, '').toLowerCase();
-	            if (name === 'alchemy') {
-	                return alchemy;
-	            }
-
-	            if (alchemy.isFunction(orgRequire)) {
-	                // when using node-webkit then node's require method
-	                // will be available in the browser environment
-	                return orgRequire(pname);
-	            }
-
-	            return null;
-	        };
-
-	        window.module = window.module || {
-	            get exports() {
-	                return null;
-	            },
-
-	            set exports(potion) {
-	                if (alchemy.isFunction(potion)) {
-	                    potion(alchemy);
-	                }
-	            },
-	        };
-	    }
-
-	    //
-	    // [section_properties]
-	    //
-
-	    /**
-	     *
-	     *
-	     * @property platform
-	     * @type Object
-	     * @readonly
-	     */
-	    alchemy.platform = {
-	        isBrowser: isBrowser,
-	        isNode: isNode
-	    };
-
-	    /**
-	     * the prefix for internal type and method meta properties
-	     *
-	     * @property metaPrefix
-	     * @type String
-	     */
-	    alchemy.metaPrefix = '_AJS_';
-
-	    /**
-	     * <code>true</code> if and only if the all required sources are loaded
-	     * and the dom tree is ready for manipulation; read-only
-	     *
-	     * @property isReady
-	     * @type Boolean
-	     */
-	    alchemy.isReady = false;
-
-
-	    //
-	    // [section_utils]
-	    //
-
-	    /**
-	     * Prepares and configures the alchemical workbench (configures paths, loads
-	     * required sources, ...)
-	     *
-	     * @param {Object} cfg The configuration object:
-	     * @param {Object} [cfg.path] Optional, a path configuration; see {@link alchemy.path.set}
-	     * @param {String[]} [cfg.require] Optional, a set of formulas to load
-	     * @param {Function} [cfg.onReady] Optional, a callback executed when ready
-	     * @param {Boolean} [cfg.waitForDomReady] Optional, you can skipping the wait for the
-	     *      DOMContentLoaded event of browser by setting this option to <code>false</code>
-	     *      (Defaults to <code>true</code>)
-	     */
-	    alchemy.heatUp = function (cfg) {
-	        // apply defaults
-	        cfg = cfg || {};
-	        cfg.onReady = cfg.onReady || alchemy.emptyFn;
-
-	        // create method which will resolve the dependencies and call the given callback
-	        // we may have to wait for the platform to be ready
-	        var callback = function () {
-	            alchemy.formula.resolve(cfg.require || [], function () {
-	                alchemy.isReady = true;
-	                cfg.onReady();
-	            });
-	        };
-
-	        if (cfg.path) {
-	            alchemy.path.set(cfg.path);
-	        }
-
-	        if (alchemy.platform.isBrowser && !alchemy.isReady && cfg.waitForDomReady !== false) {
-	            document.addEventListener('DOMContentLoaded', callback);
-	        } else {
-	            callback();
-	        }
-	    };
-
-	    /**
-	     * Checks if a given item is an object.
-	     * Notice that every array is an object but not every object
-	     * is an array (which is also true for functions).
-	     *
-	     * @param {Various} o The item to be checked
-	     * @return {Boolean} <code>true</code> if the given item is an object
-	     */
-	    alchemy.isObject = function isObject(o) {
-	        return o && (typeof o === 'object' || typeof o === 'function');
-	    };
-
-	    /**
-	     * Checks if a given item is an array
-	     *
-	     * @param {Various} a The item to be checked
-	     * @return {Boolean} <code>true</code> if the given item is an array
-	     */
-	    alchemy.isArray = function isArray(a) {
-	        return a instanceof Array;
-	    };
-
-	    /**
-	     * Checks if a given item is a function
-	     *
-	     * @param {Various} f The item to be checked
-	     * @return {Boolean} <code>true</code> if the given item is a function
-	     */
-	    alchemy.isFunction = function isFunction(f) {
-	        return typeof f === 'function';
-	    };
-
-	    /**
-	     * Checks if a given item is a number
-	     *
-	     * @param {Various} n The item to be checked
-	     * @return {Boolean} <code>true</code> if the given item is a number
-	     */
-	    alchemy.isNumber = function isNumber(n) {
-	        return typeof n === 'number' && !isNaN(n);
-	    };
-
-	    /**
-	     * Checks if a given item is a string
-	     *
-	     * @param {Various} s The item to be checked
-	     * @return {Boolean} <code>true</code> if the given item is a string
-	     */
-	    alchemy.isString = function isString(s) {
-	        return typeof s === 'string';
-	    };
-
-	    /**
-	     * Checks if the given item is a boolean
-	     *
-	     * @param {Various} b the value to check
-	     * @return {Boolean} <code>true</code> if and only if the check is passed
-	     */
-	    alchemy.isBoolean = function isBoolean(b) {
-	        return typeof b === 'boolean';
-	    };
-
-	    /**
-	     * Checks if the given value is defined
-	     *
-	     * @param {Various} x the value to check
-	     * @return {Boolean} <code>true</code> if and only if the check is passed
-	     */
-	    alchemy.isDefined = function isDefined(x) {
-	        return alchemy.isNumber(x) || alchemy.isString(x) || alchemy.isObject(x) || alchemy.isArray(x) || alchemy.isFunction(x) || alchemy.isBoolean(x);
-	    };
-
-	    /**
-	     * Iterates of an iterable object and call the given method for each item
-	     * For example:
-	     * <pre><code>
-	     *      // (a) default use case iterate through an array or an object
-	     *      alchemy.each([1, 2, ..., n], function doStuff(val) { ... });
-	     *
-	     *      // (b) map data
-	     *      alchemy.each([1, 2, 3], function double(val) {
-	     *          return 2 * val;
-	     *      }); // -> [2, 4, 6]
-	     *      alchemy.each({foo: 1, bar: 2}, function double(val) {
-	     *          return 2 * val;
-	     *      }); // -> {foo: 2, bar: 4}
-	     *
-	     *      // (c) filter data
-	     *      alchemy.each([1, 2, 3, 4], function (val) {
-	     *          return (val % 2 === 0) ? val : undefined;
-	     *      }); // -> [2, 4]
-	     *      alchemy.each({ foo: 1, bar: 2, baz: 3, }, function uneven(val) {
-	     *          return (val % 2 !== 0) ? val : undefined;
-	     *      }); // -> { foo: 1, baz: 3 }
-	     * </code></pre>
-	     *
-	     * @param {Object/Array} iterable The object to iterate through
-	     * @param {Function} fn The callback function to be called for each item
-	     * @param {Object} scope The execution scope for the callback function
-	     * @param {Array} more Optional; an addional set of arguments which will
-	     *      be passed to the callback function
-	     * @return {Object/Array} The aggregated results of each callback (see examples)
-	     */
-	    alchemy.each = function each(iterable, fn, scope, more) {
-	        var args = [null, null];
-	        var result, resultSet;
-	        var i, l;
-
-	        if (more !== undefined) {
-	            args = args.concat(more);
-	        }
-
-	        if (alchemy.isArray(iterable)) {
-	            resultSet = [];
-	            for (i = 0, l = iterable.length; i < l; ++i) {
-	                args[0] = iterable[i];
-	                args[1] = i;
-	                result = fn.apply(scope, args);
-
-	                if (typeof result !== 'undefined') {
-	                    resultSet.push(result);
-	                }
-	            }
-	        } else if (alchemy.isObject(iterable)) {
-	            var keys = Object.keys(iterable);
-	            // use Object.keys + for-loop to allow optimizing alchemy.each for
-	            // iterating over objects in hash-table-mode
-
-	            resultSet = {};
-
-	            for (i = 0, l = keys.length; i < l; ++i) {
-	                var key = keys[i];
-
-	                args[0] = iterable[key];
-	                args[1] = key;
-	                result = fn.apply(scope, args);
-
-	                if (typeof result !== 'undefined') {
-	                    resultSet[key] = result;
-	                }
-	            }
-	        }
-
-	        return resultSet;
-	    };
-
-	    /**
-	     * Mixes the given additives to the source object
-	     * Example usage:
-	     * <pre><code>
-	     * // first add defaults values to a new object and then overrides the defaults
-	     * // with the actual values
-	     * alchemy.mix({}, defaults, values);
-	     * </code></pre>
-	     * @function
-	     *
-	     * @param {Object} base
-	     *      the source object (will be modified!)
-	     *
-	     * @param {Object} ...overrides
-	     *      the set of additives
-	     *
-	     * @return Object
-	     *      the modified source object
-	     */
-	    alchemy.mix = (function () {
-	        function mixOneItem(value, key, obj) {
-	            obj[key] = value;
-	        }
-	        return function () {
-	            var args = Array.apply(null, arguments);
-	            var base = args.shift();
-	            var next;
-
-	            while (args.length) {
-	                next = args.shift();
-	                alchemy.each(next, mixOneItem, null, [base]);
-	            }
-	            return base;
-	        };
-	    }());
-
-	    /**
-	     * Allows overriding methods of an given object. If the base object has
-	     * already a method with the same key this one will be hidden but does not
-	     * get lost. You can access the overridden method using
-	     * <code>_super.call(this, ...)</code>
-	     *
-	     * For example: <pre><code>
-	     * var obj = {
-	     *      foo: function () {
-	     *          return 'foo';
-	     *      }
-	     * };
-	     *
-	     * alchemy.override(obj, {
-	     *      foo: alchemy.override(function (_super) {
-	     *          return function () {
-	     *              return _super.call(this) + ' - bar';
-	     *          };
-	     *      })
-	     * });
-	     *
-	     * obj.foo(); // will return 'foo - bar'
-	     * </code></pre>
-	     * @function
-	     *
-	     * @param {Object} base
-	     *      The base object to be overridden (will be modified!)
-	     *
-	     * @param {Object} overrides
-	     *      The set of new methods
-	     *
-	     * @return {Object}
-	     *      The modified object
-	     */
-	    alchemy.override = (function () {
-	        // helper to decide whether it is a magic meta function that creates the actual object method
-	        function isMagicMethod(fn) {
-	            return fn && (fn.hocuspocus === true);
-	        }
-
-	        // helper to identify property descriptors
-	        function isPropertyDef(obj) {
-	            return alchemy.isObject(obj) && alchemy.meta(obj, 'isProperty');
-	        }
-
-	        // helper method to add a single property
-	        function addProperty(prop, key, obj) {
-	            if (alchemy.isFunction(prop)) {
-	                if (isMagicMethod(prop)) {
-	                    // you said the magic words so you will get your reference to the overridden method
-	                    prop = prop(obj[key]);
-	                }
-	            }
-	            if (isPropertyDef(prop)) {
-	                alchemy.defineProperty(obj, key, prop);
-	            } else {
-	                obj[key] = prop;
-	            }
-	        }
-
-	        return function (base, overrides) {
-	            if (typeof base === 'function' && typeof overrides === 'undefined') {
-	                base.hocuspocus = true;
-	                return base;
-	            }
-
-	            if (overrides && overrides.constructor !== Object.prototype.constructor) {
-	                addProperty(overrides.constructor, 'constructor', base);
-	            }
-
-	            alchemy.each(overrides, addProperty, null, [base]);
-
-	            return base;
-	        };
-	    }());
-
-	    /**
-	     * @function
-	     */
-	    alchemy.extend = function extend(base, overrides) {
-	        var extended = Object.create(base);
-
-	        if (alchemy.isFunction(overrides)) {
-	            overrides = overrides(base);
-	        }
-
-	        if (overrides) {
-	            alchemy.override(extended, overrides);
-	        }
-
-	        return extended;
-	    };
-
-	    /**
-	     * Extract values of a specific property from a given set of items
-	     * For example:
-	     * <pre><code>
-	     * alchemy.extract([{key: 'foo'}, {key: 'bar'}, ... ], 'key'); // -> ['foo', 'bar', ...]
-	     * alchemy.extract({o1: {key: 'foo'}, o2: {key: 'bar'}, ...}, 'key'); // -> ['foo', 'bar', ...]
-	     * </code></pre>
-	     * @function
-	     *
-	     * @param {Array/Object} list
-	     *      The initial set of items
-	     *
-	     * @param {String} property
-	     *      The name of the property to extract
-	     *
-	     * @param {Array}
-	     *      The array of extracted values
-	     */
-	    alchemy.extract = (function () {
-	        function extractOne(item, index, key, result) {
-	            if (alchemy.isObject(item)) {
-	                result.push(item[key]);
-	            }
-	        }
-	        return function (list, property) {
-	            var result = [];
-	            alchemy.each(list, extractOne, null, [property, result]);
-	            return result;
-	        };
-	    }());
-
-	    /**
-	     * Filtes a set (array or hash object) to contain only unique values
-	     *
-	     * @param {Array|Object} list The list to be filtered
-	     * @return {Array|Object} The filtered list
-	     *
-	     * @example
-	     * alchemy.unique([1, 3, 4, 1, 3, 5]); // -> [1, 3, 4, 5]
-	     * alchemy.unique({foo: 'foo', bar: 'foo', baz: 'baz'); // -> {foo: 'foo', baz: 'baz'}
-	     */
-	    alchemy.unique = function unique(list) {
-	        var used = {};
-	        return alchemy.each(list, function (item) {
-	            if (used[item]) {
-	                return;
-	            }
-
-	            used[item] = true;
-	            return item;
-	        });
-	    };
-
-	    /**
-	     * Creates a set of unique values from the given input
-	     * @function
-	     *
-	     * @param {Array|Object} ...args The initial data sets
-	     *
-	     * @return {Array} An array containing the unique values
-	     *
-	     * @example
-	     * alchemy.union([1, 2, 4, 10], [3, 4], [1, 2, 5, 101]); // -> [1, 2, 4, 10, 3, 5, 101]
-	     * alchemy.union({foo: 'foo'}, {bar: 'bar'}, {bar: 'baz'}); // -> ['foo', 'bar', 'baz']
-	     * alchemy.union({foo: 'foo'}, ['foo', 'bar'], {bar: 'baz'}) // -> ['foo', 'bar', 'baz']
-	     */
-	    alchemy.union = (function () {
-	        function processOneArgument(array, index, result, seen) {
-	            alchemy.each(array, processOneValue, null, [result, seen]);
-	        }
-
-	        function processOneValue(value, index, result, seen) {
-	            if (!seen[value]) {
-	                result.push(value);
-	                seen[value] = true;
-	            }
-	        }
-
-	        return function () {
-	            var result = [];
-	            var seen = {};
-	            var args = Array.apply(null, arguments);
-
-	            alchemy.each(args, processOneArgument, null, [result, seen]);
-	            return result;
-	        };
-	    }());
-
-	    /**
-	     * Returns the values of a hash object as an array
-	     * @function
-	     *
-	     * @param {Object} hash The key-value-hash-map
-	     * @return {Array} An array containing the values
-	     */
-	    alchemy.values = (function () {
-	        function addValueToResultSet(value, key, resultSet) {
-	            resultSet.push(value);
-	        }
-
-	        return function values(hash) {
-	            if (!hash || typeof hash !== 'object') {
-	                return;
-	            }
-
-	            var result = [];
-	            alchemy.each(hash, addValueToResultSet, null, [result]);
-
-	            return result;
-	        };
-	    }());
-
-	    /**
-	     * Reads and writes the value of a meta attribute from/to
-	     * a given object
-	     *
-	     * @param {Object} obj The object with the meta property
-	     * @param {String} key The identifier of the attribute
-	     * @param {Mixed} [value] (Optional) The new value;
-	     *      If ommitted the value will not be changed
-	     * @return {Mixed} The current value of the meta attributes
-	     */
-	    alchemy.meta = function (obj, key, value) {
-	        key = alchemy.metaPrefix + key;
-	        if (value !== undefined) {
-	            obj[key] = value;
-	        }
-	        return obj[key];
-	    };
-
-	    /**
-	     * This method works in two different mode:<ul>
-	     *
-	     * <li>Mode (A) will work similar to Object.defineProperty (see
-	     * https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperty)
-	     * but with a few defaults switched. New properties are by default writable,
-	     * enumerable and configurable whichh is IMO more natural.
-	     *
-	     * <li>Mode (B) let you mark a given object as a property definition which
-	     * will be evaluated when brewing a prototype or adding the property to
-	     * one with {@link alchemy.override}</li>
-	     *
-	     * </ul>
-	     *
-	     * @param {Object} obj The object which should get the property (mode A)
-	     *      or the property definition (mode B)
-	     *      (NOTICE that either way the given object will be modified)
-	     * @param {String} [prop] The name of the property (mode A); empty (mode B)
-	     * @param {Object} [opts] The property definition (mode A); empty (mode B)
-	     *
-	     * @return obj The modified object
-	     */
-	    alchemy.defineProperty = function (obj, prop, opts) {
-	        if (arguments.length === 1) {
-	            // Mode B: mark it as a properties so alchemy.override will
-	            // know what to do
-	            alchemy.meta(obj, 'isProperty', true);
-	            return obj;
-	        }
-
-	        // Mode A: define the new property "prop" for object "obj"
-
-	        // switch the defaults to be truthy unless said otherwise
-	        opts = opts || {};
-	        opts.writable = (opts.writable !== false);
-	        opts.enumerable = (opts.enumerable !== false);
-	        opts.configurable = (opts.configurable !== false);
-
-	        if (opts.get) {
-	            delete opts.writable; // writable/value is not allowed when defining getter/setter
-	            delete opts.value;
-
-	            if (alchemy.isBoolean(opts.get)) {
-	                // "get" was simply set to true -> get the name from the property ("foo" -> "getFoo")
-	                opts.get = 'get' + ucFirst(prop);
-	            }
-	            if (alchemy.isString(opts.get)) {
-	                // "get" was set to the getter's name
-	                // -> create a function that calls the getter (this way we can
-	                // later override the method)
-	                var getterName = opts.get;
-	                opts.get = function () {
-	                    return this[getterName]();
-	                };
-	            }
-	        }
-
-	        if (opts.set) {
-	            delete opts.writable; // writable/value is not allowed when defining getter/setter
-	            delete opts.value;
-
-	            if (alchemy.isBoolean(opts.set)) {
-	                // "set" was simply set to true -> get the name from the property ("foo" -> "setFoo")
-	                opts.set = 'set' + ucFirst(prop);
-	            }
-	            if (alchemy.isString(opts.set)) {
-	                var setterName = opts.set;
-	                opts.set = function (value) {
-	                    return this[setterName](value);
-	                };
-	            }
-	        }
-
-	        return Object.defineProperty(obj, prop, opts);
-	    };
-
-	    /**
-	     * brews a new prototype based on the given ingredients
-	     *
-	     * @param {Object} typeDef The type definition configuration; accepted properties are:
-	     * @param {Object|String} [typeDef.extend] The prototype that should be extended
-	     * @param {String} [typeDef.name] The name under which the new type should be registered
-	     *      in the given namespace;
-	     *      NOTICE: This may overwrite existing type definitions!
-	     * @param {String} [typeDef.alias] An shortname for the potion
-	     * @param {Object} [typeDef.overrides] A set of properties and methods the new prototype should
-	     *      get (see {@link alchemy.override} for details)
-	     *
-	     * @return Object
-	     *      the new prototype
-	     */
-	    alchemy.brew = function (typeDef) {
-	        if (typeDef.api === 'v2') {
-	            return brewV2(typeDef);
-	        }
-
-	        return brewV1(typeDef);
-	    };
-
-	    /** @private */
-	    function brewV1(typeDef) {
-	        var SuperType = typeDef.extend || alchemy('alchemy.core.MateriaPrima');
-	        var includes = typeDef.ingredients;
-	        var overrides = typeDef.overrides;
-	        var NewType;
-	        var meta = [];
-
-	        if (alchemy.isString(SuperType)) {
-	            SuperType = alchemy(SuperType);
-	        }
-	        NewType = Object.create(SuperType);
-
-	        if (overrides && overrides.hasOwnProperty('constructor')) {
-	            NewType.constructor = overrides.constructor;
-	            NewType.constructor.prototype = NewType;
-	            delete overrides.constructor;
-	        } else {
-	            NewType.constructor = function (cfg) {
-	                SuperType.constructor.call(this, cfg);
-	            };
-	            NewType.constructor.prototype = NewType;
-	        }
-
-	        if (typeDef.name) {
-	            // register new type in global namespace
-	            potions[typeDef.name] = NewType;
-	            meta.push(['name', typeDef.name]);
-	        }
-
-	        if (typeDef.alias) {
-	            // register a shortcut
-	            if (!aliases[typeDef.alias]) {
-	                registerAlias(typeDef.alias, typeDef.name);
-	            }
-	            meta.push(['alias', typeDef.alias]);
-	        }
-
-	        if (includes) {
-	            // enhance new prototype with given ingredients (mixins)
-	            alchemy.each(includes, function (item, key) {
-	                var cfg;
-	                if (alchemy.isString(item)) {
-	                    cfg = {
-	                        potion: item,
-	                        init: false,
-	                        delegate: false,
-	                    };
-	                } else {
-	                    cfg = alchemy.mix({
-	                        init: false,
-	                        delegate: false,
-	                    }, item);
-	                }
-
-	                NewType.addIngredient(key, cfg);
-	            });
-	        }
-
-	        if (alchemy.isFunction(overrides)) {
-	            var dependencies = [SuperType].concat(alchemy.each(typeDef.requires, function (name) {
-	                return alchemy(name);
-	            }));
-
-	            overrides = overrides.apply(null, dependencies);
-	        }
-	        if (overrides) {
-	            alchemy.override(NewType, overrides);
-	        }
-
-	        meta.push(['supertype', SuperType]);
-	        alchemy.each(meta, function (metaAttr) {
-	            alchemy.meta(NewType, metaAttr[0], metaAttr[1]);
-	        });
-
-	        return NewType;
-	    }
-
-	    /** @private */
-	    function brewV2(typeDef) {
-	        var potion = typeDef.potion || {};
-	        var dependencies = alchemy.each(typeDef.requires, function (name) {
-	            return alchemy(name);
-	        });
-
-	        if (typeof potion === 'function') {
-	            potion = potion.apply(null, dependencies);
-	        }
-
-	        if (typeDef.name) {
-	            // register new type in potion store
-	            potions[typeDef.name] = potion;
-	            alchemy.meta(potion, 'name', typeDef.name);
-	        }
-
-	        if (typeDef.alias) {
-	            // register a shortcut
-	            registerAlias(typeDef.alias, typeDef.name);
-	            alchemy.meta(potion, 'alias', typeDef.alias);
-	        }
-
-	        return potion;
-	    }
-
-	    /**
-	     * New experimental API to create potions
-	     */
-	    alchemy.cork = function (formula) {
-	        return new Potion(formula);
-	    };
-
-	    /**
-	     * creates a unique identifier
-	     * @function
-	     *
-	     * @return {String}
-	     *      the generated identifier
-	     *
-	     */
-	    alchemy.id = (function () {
-	        var counter = 0;
-	        return function () {
-	            return 'AJS-' + (counter++);
-	        };
-	    }());
-
-	    /**
-	     * Returns a UUID
-	     * (source http://stackoverflow.com/a/8809472)
-	     * @function
-	     *
-	     * @return {String} the UUID
-	     */
-	    alchemy.uuid = function () {
-	        var d = alchemy.now();
-	        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-	            /* jshint bitwise: false */
-	            var r = (d + Math.random() * 16) % 16 | 0;
-	            d = Math.floor(d / 16);
-	            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-	            /* jshint bitwise: true */
-	        });
-	        return uuid;
-	    };
-
-	    /**
-	     * an reuseable empty function object
-	     */
-	    alchemy.emptyFn = function () {};
-
-	    /**
-	     * Returns the number of milliseconds, accurate to a thousandth of a
-	     * millisecond, from the start of document navigation to the time the
-	     * now method was called.
-	     * Shim for window.performance.now(); see http://www.w3.org/TR/animation-timing/
-	     * @function
-	     *
-	     * @return {Number} The time in ms relative to the start of the
-	     *      document navigation
-	     */
-	    alchemy.now = (function () {
-	        if (isBrowser && window.performance && window.performance.now) {
-	            // use window.perfomance.now (which is the reference) if possible
-	            return function () {
-	                return window.performance.now();
-	            };
-
-	        }
-
-	        // fallback to Date.now()
-	        var loadTime = Date.now();
-	        return function () {
-	            return Date.now() - loadTime;
-	        };
-	    }());
-
-
-	    ///////////////////////////////////////////////////////////////////////////
-	    //
-	    // MODULE: path [section_path]
-	    //
-	    //
-
-	    function PathModule() {
-	        this.pathMap = {
-	            alchemy: '../../lib',
-	        };
-	    }
-
-	    /**
-	     * Returns the filepath to a given namespace
-	     *
-	     * @param {String} ns The name space
-	     * @return {String} The file path
-	     */
-	    PathModule.prototype.map = function (ns) {
-	        var parts = ns.split('.');
-	        var result = [];
-
-	        while (parts.length > 0) {
-	            var match = this.pathMap[parts.join('.')];
-	            if (match) {
-	                result.unshift(match);
-	                break;
-	            } else {
-	                result.unshift(parts.pop());
-	            }
-	        }
-
-	        return result.join('/');
-	    };
-
-	    /**
-	     * Returns the configured path to a given namespace
-	     *
-	     * @param {String} [ns] Optional. The namespace; the paths of all packages
-	     *  are returned if missing
-	     *
-	     * @return {String/Object} The path if a valid package is given
-	     *      An Object with all paths if namespace is omitted
-	     *      <code>undefined</code> the given namespace is unknown
-	     */
-	    PathModule.prototype.get = function (ns) {
-	        return ns ? this.pathMap[ns] : this.pathMap;
-	    };
-
-	    /**
-	     * Add new configurations or change existing ones
-	     *
-	     * @param {Object} cfg The name space cfg; Each key represents a
-	     *      namespace and the value should be the path
-	     */
-	    PathModule.prototype. set = function (cfg) {
-	         this.pathMap = alchemy.mix(this.pathMap, cfg);
-	    };
-
-
-	    ///////////////////////////////////////////////////////////////////////////
-	    //
-	    // MODULE: formula [section_formula]
-	    //
-	    //
-
-	    function FormulaModule() {
-	        this.resolved = {};
-	        this.cache = {};
-	    }
-
-	    /**
-	     * helper method to traverse all registered formulas and add all dependencies
-	     * which may have to be resolved
-	     * @private
-	     */
-	    FormulaModule.prototype.collectCandidates = function () {
-	        var candidates = [];
-
-	        alchemy.each(this.cache, function (def) {
-	            candidates.push(def.extend);
-
-	            if (def.requires) {
-	                candidates = candidates.concat(def.requires || []);
-	            }
-
-	            if (def.ingredients) {
-	                alchemy.each(def.ingredients, function (ingr) {
-	                    if (alchemy.isString(ingr)) {
-	                        candidates.push(ingr);
-	                    } else if (alchemy.isObject(ingr) && alchemy.isString(ingr.potion)) {
-	                        candidates.push(ingr.potion);
-	                    }
-	                });
-	            }
-	        });
-
-	        return candidates;
-	    };
-
-	    /**
-	     * helper method to filter the possible canditates
-	     * @private
-	     */
-	    FormulaModule.prototype.filterCandidates = function (candidates) {
-	        var dependencies = [];
-
-	        for (var i = 0, l = candidates.length; i < l; i++) {
-	            var c = candidates[i];
-	            if (alchemy.isString(c) && !this.resolved[c] && dependencies.indexOf(c) < 0) {
-	                dependencies.push(c);
-	            }
-	        }
-
-	        return dependencies;
-	    };
-
-	    /**
-	     * Adds a new formula to the cache;
-	     * A formula has to be an Object with at least the property "name";
-	     * See {@link alchemy.brew} for more details on formulas
-	     *
-	     * @param {Object} formula The formula to add
-	     */
-	    FormulaModule.prototype.add = function (formula, overrides) {
-	        if (!alchemy.isObject(formula)) {
-	            throw 'Invalid formula: ' + formula;
-	        }
-
-	        if (!formula.name) {
-	            throw 'Missing required property "name"';
-	        }
-
-	        if (formula.alias) {
-	            registerAlias(formula.alias, formula.name);
-	        }
-
-	        formula.overrides = formula.overrides || overrides;
-
-	        this.cache[formula.name] = formula;
-	        this.resolved[formula.name] = true;
-	    };
-
-	    /**
-	     * New experimental API to define potion formulas
-	     *
-	     * @param {String} name The name of the new potion
-	     * @param {Array} dependencies The dependencies of the potion
-	     * @param {Function|Object} potion The potion formula to add
-	     */
-	    FormulaModule.prototype.define = function (name, dependencies, potion) {
-	        return this.add({
-	            name: name,
-	            requires: dependencies,
-	            api: 'v2',
-	            potion: potion
-	        });
-	    };
-
-	    /**
-	     * Returns the formula to a given name; If there has no formula with
-	     * the name been cached yet it is going to be loaded (nodejs only!)
-	     *
-	     * @param {String} name The name of the formula
-	     * @return {Object} The formula
-	     */
-	    FormulaModule.prototype.get = function (name) {
-	        if (!this.cache[name]) {
-	            var url = alchemy.path.map(name) + '.js';
-	            var module = __webpack_require__(220)(url);
-
-	            if (alchemy.isFunction(module)) {
-	                module(alchemy);
-	            }
-	        }
-
-	        return this.cache[name];
-	    };
-
-	    /**
-	     * Returns the set of unresolve dependencies
-	     *
-	     * @return {Array}
-	     */
-	    FormulaModule.prototype.dependencies = function () {
-	        return this.filterCandidates(this.collectCandidates());
-	    };
-
-	    /**
-	     * Resolves the dependencies by loading the required formulas
-	     *
-	     * @param {Array} dependencies An array of formula names to load;
-	     *      If this initial set produces new dependencies then these
-	     *      will be loaded too
-	     *
-	     * @param {Function} callback Callback method; executed if all
-	     *      dependencies are resolved;
-	     */
-	    FormulaModule.prototype.resolve = function (dependencies, callback, iteration) {
-	        iteration = iteration >= 0 ? iteration : 0;
-
-	        if (iteration > 1000) {
-	            throw 'Cannot resolve the following dependencies: "' + dependencies.join('", "') + '"';
-	        }
-
-	        var size = dependencies.length;
-	        if (size === 0) {
-	            // no further unresolved dependencies
-	            // -> finish
-	            if (alchemy.isFunction(callback)) {
-	                callback();
-	            }
-	            return;
-	        }
-
-	        var self = this;
-	        var onLoad = function () { // callback for loading a single formula
-	            size--;
-	            if (size === 0) {
-	                // all formulas of first batch loaded
-	                // -> recalculate dependencies and load those too
-	                self.resolve(self.dependencies(), callback, iteration + 1);
-	            }
-	        };
-
-	        alchemy.each(dependencies, function (formulaName) {
-	            var scriptUrl = alchemy.path.map(formulaName) + '.js';
-
-	            this.resolved[formulaName] = true;
-
-	            if (alchemy.platform.isBrowser) {
-	                var script = document.createElement('script');
-	                script.src = scriptUrl;
-	                script.onload = onLoad;
-	                document.head.appendChild(script);
-	            } else if (alchemy.platform.isNode) {
-	                var result = __webpack_require__(220)(scriptUrl);
-	                if (alchemy.isFunction(result)) {
-	                    result(alchemy);
-	                }
-	                onLoad();
-	            }
-	        }, this);
-	    };
-
-	    /**
-	     * A submodule for managing the formulas (see module methods for further
-	     * descriptions)
-	     *
-	     * @property formula
-	     * @type Object
-	     */
-	    alchemy.formula = new FormulaModule();
-	    alchemy.FormulaModule = FormulaModule;
-
-	    /**
-	     * A submodule to handle the file paths of logical namespaces;
-	     * See description of submethods for further details
-	     *
-	     * @property path
-	     * @type Object
-	     */
-	    alchemy.path = new PathModule();
-	    alchemy.PathModule = PathModule;
-	})();
-
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var map = {
-		"./Alchemy": 219,
-		"./Alchemy.js": 219,
-		"./Collectum": 221,
-		"./Collectum.js": 221,
-		"./Immutatio": 222,
-		"./Immutatio.js": 222,
-		"./Maleficus": 223,
-		"./Maleficus.js": 223,
-		"./MateriaPrima": 224,
-		"./MateriaPrima.js": 224,
-		"./Modelum": 225,
-		"./Modelum.js": 225,
-		"./Observari": 226,
-		"./Observari.js": 226,
-		"./Oculus": 227,
-		"./Oculus.js": 227
-	};
-	function webpackContext(req) {
-		return __webpack_require__(webpackContextResolve(req));
-	};
-	function webpackContextResolve(req) {
-		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
-	};
-	webpackContext.keys = function webpackContextKeys() {
-		return Object.keys(map);
-	};
-	webpackContext.resolve = webpackContextResolve;
-	module.exports = webpackContext;
-	webpackContext.id = 220;
-
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function () {
-	    'use strict';
-
-	    var alchemy = __webpack_require__(219);
-
-	    /**
-	     * A potion to store and manage a set of data objects. The may be
-	     * instances of {@link alchemy.core.Modelum} but it's not neccessary.
-	     * It is recommended, that the items to store provide a property which
-	     * can act as a key (e.g. "id"; see {@link alchemy.core.Collectum.idProp})
-	     *
-	     * @class
-	     * @name alchemy.core.Collectum
-	     * @extends alchemy.core.MateriaPrima
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.Collectum',
-	        alias: 'Collectum',
-	        ingredients: {
-	            observable: 'alchemy.core.Observari',
-	            observer: 'alchemy.core.Oculus',
-	        },
-	        extend: 'alchemy.core.MateriaPrima',
-	        requires: ['alchemy.core.Modelum'],
-	        overrides: {
-	            /** @lends alchemy.core.Collectum */
-
-	            /**
-	             * Fired after every change of the stored data
-	             *
-	             * @event
-	             * @name alchemy.core.Collectum#change
-	             * @param {Object} data The event data providing:
-	             *      - <code>insertIndex {Number}</code>: the index where the new items where inserted
-	             *      - <code>added {Array}</code>: the list of new items
-	             *      - <code>removed {Object}</code>: the removed item
-	             */
-
-	            /**
-	             * Fired after adding an item
-	             *
-	             * @event
-	             * @name alchemy.core.Collectum#add
-	             * @param {Object} data The event data providing the property <code>added</code>
-	             *      which contains the added itmes
-	             */
-
-	            /**
-	             * Fired after removeing an item
-	             *
-	             * @event
-	             * @name alchemy.core.Collectum#remove
-	             * @param {Object} data The event data providing the property <code>removed</code>
-	             *      which contains the removed item
-	             */
-
-	            /**
-	             * The property which is used to determine the item's id
-	             * Defaults to <code>id</code>
-	             *
-	             * @property idProp
-	             * @type String
-	             */
-	            idProp: 'id',
-
-	            /**
-	             * The number of items in the collection
-	             *
-	             * @property length
-	             * @type Number
-	             */
-	            length: 0,
-
-	            /**
-	             * The set of items in the collection
-	             *
-	             * @property items
-	             * @type Array
-	             * @protected
-	             */
-	            items: undefined,
-
-	            /**
-	             * A map key/id -> index for fast accesses by id
-	             *
-	             * @property keys
-	             * @type Object
-	             * @protected
-	             */
-	            keys: undefined,
-
-	            /**
-	             * Initialze collection
-	             * IMPORTENT: call super when overriding
-	             * @protected
-	             */
-	            init: function () {
-	                var initialItems = this.items;
-
-	                this.items = [];
-	                this.keys = {};
-
-	                if (alchemy.isArray(initialItems)) {
-	                    this.add(initialItems);
-	                }
-	            },
-
-	            /**
-	             * Checks if the collection contains the given item
-	             *
-	             * @param {String/Object} data
-	             *      The data object or its id
-	             *
-	             * @return Boolean
-	             *      <code>true</code> if and only if there is an item with the same
-	             *      id stored in the collection
-	             */
-	            contains: function (data) {
-	                var key = alchemy.isObject(data) ? data[this.idProp] : data;
-	                return this.keys[key] >= 0;
-	            },
-
-	            /**
-	             * Adds new data at the end of the collection
-	             *
-	             * @param {Object/Array} data
-	             *      The new data object or an array of objects;
-	             *      It is recommended that the objects provide the property "id" which will act
-	             *      as the key. If there is no id the object will get one.
-	             *
-	             * @param {Boolean} silent
-	             *      Optional. Set to <code>true</true> to prevent events
-	             */
-	            add: function (data, silent) {
-	                this.insert(this.items.length, data, silent);
-	            },
-
-	            /**
-	             * Inserts new data at the given position
-	             *
-	             * @param {Number} index
-	             *      The insertion index
-	             *
-	             * @param {Object/Array} data
-	             *      The new data object or an array of objects;
-	             *      It is recommended that the objects provide the property "id" which will act
-	             *      as the key. If there is no id the object will get one.
-	             *
-	             * @param {Boolean} silent
-	             *      Optional. Set to <code>true</true> to prevent events
-	             */
-	            insert: function (index, data, silent) {
-	                var i, l;          // loop params
-	                var id;            // an item id - acting as key
-	                var args;          // the arguments for inserting the data to the item set
-	                var filtered = []; // the actually new data
-	                var item;          // a single data item
-
-	                // normalize data argument
-	                if (!alchemy.isArray(data)) {
-	                    data = [data];
-	                }
-	                // filter items which are already stored
-	                for (i = 0, l = data.length; i < l; i++) {
-	                    item = data[i];
-	                    if (!this.contains(item) && filtered.indexOf(item) < 0) {
-	                        filtered.push(item);
-	                        this.startObservingItem(item);
-	                    }
-	                }
-	                if (filtered.length === 0) {
-	                    // no new data
-	                    return;
-	                }
-	                // bound index to the items array dimensions
-	                index = Math.max(0, Math.min(this.items.length, index));
-	                // add item to the others
-	                args = [index, 0].concat(filtered);
-	                this.items.splice.apply(this.items, args);
-	                // repair index hash
-	                for (i = index, l = this.items.length; i < l; i++) {
-	                    id = this.items[i][this.idProp];
-	                    if (!id) {
-	                        id = alchemy.id();
-	                        this.items[i][this.idProp] = id;
-	                    }
-	                    this.keys[id] = i;
-	                }
-	                // repair length attribute
-	                this.length = this.items.length;
-
-	                if (silent !== true) {
-	                    this.trigger('add', {
-	                        added: filtered,
-	                        insertIndex: index
-	                    });
-
-	                    this.trigger('change', {
-	                        added: filtered,
-	                        insertIndex: index
-	                    });
-	                }
-	            },
-
-	            /**
-	             * Returns a stored item by its index; If the given index is lesser then zero
-	             * the collection is traversed backwards;
-	             *
-	             * @param {Number} index
-	             *      The index of the stored object, zero based
-	             *
-	             * @return Object
-	             *      The stored object (<code>undefined</code> if there is no such object)
-	             *
-	             * @example
-	             * collection.at(0); // return the first item
-	             * collection.at(1); // return the second
-	             * collection.at(-1); // return the last items
-	             * collection.at(-2); // return the last but one item
-	             *
-	             */
-	            at: function (index) {
-	                if (index < 0) {
-	                    return this.at(index + this.length);
-	                } else {
-	                    return this.items[index];
-	                }
-	            },
-
-	            /**
-	             * Returns a stored item by its id
-	             *
-	             * @param {String} id
-	             *      The id of the stored object
-	             *
-	             * @return Object
-	             *      The stored object (<code>undefined</code> if there is no such object)
-	             */
-	            get: function (id) {
-	                return this.at(this.keys[id]);
-	            },
-
-	            /**
-	             * Returns the index of a stored object
-	             *
-	             * @param {String/Object} data
-	             *      The data object or it's id
-	             *
-	             * @return Number
-	             *      The index (zero based) with the data store;
-	             *      <code>-1</code> if there is no such item
-	             */
-	            indexOf: function (data) {
-	                var key = data;
-	                if (alchemy.isObject(data)) {
-	                    key = data[this.idProp];
-	                }
-	                return alchemy.isNumber(this.keys[key]) ? this.keys[key] : -1;
-	            },
-
-	            /**
-	             * Returns the data of all stored objects
-	             * If you have stored complex objects (with function, ...) it is recommended
-	             * that these objects provide a <code>toData</code> method the get the pure
-	             * data (e.g. as {@link alchemy.core.Modelum}
-	             *
-	             * @return Array
-	             *      The set of data
-	             */
-	            toData: function () {
-	                var result = [];
-	                var item;
-	                var itemData;
-
-	                for (var i = 0, l = this.items.length; i < l; i++) {
-	                    item = this.items[i];
-	                    if (alchemy.isFunction(item.toData)) {
-	                        // the items is a model or something alike
-	                        // -> get pure data
-	                        itemData = item.toData();
-	                    } else {
-	                        // the item is properly a pure data Object
-	                        // -> add it itself
-	                        itemData = item;
-	                    }
-	                    result.push(itemData);
-	                }
-	                return result;
-	            },
-
-	            /**
-	             * Removes an item from the collection
-	             *
-	             * @param {String/Object} data
-	             *      The data to be removed or its id
-	             *
-	             * @param {Boolean} silent
-	             *      Optional. Set to <code>true</true> to prevent events
-	             */
-	            remove: function (data, silent) {
-	                this.removeAt(this.indexOf(data), silent);
-	            },
-
-	            /**
-	             * Removes the item at the given position from the collection
-	             *
-	             * @param {Number} index
-	             *      The index of the item to be removed
-	             *
-	             * @param {Boolean} silent
-	             *      Optional. Set to <code>true</true> to prevent events
-	             */
-	            removeAt: function (index, silent) {
-	                var removedItem;
-	                if (!alchemy.isNumber(index) || index < 0 || index >= this.items.length) {
-	                    // index is not within the items array dimensions
-	                    return;
-	                }
-	                removedItem = this.items[index];
-	                this.stopObservingItem(removedItem);
-
-	                // remove item from key hash and list
-	                delete this.keys[removedItem[this.idProp]];
-	                this.items.splice(index, 1);
-	                // repair index hash
-	                for (var i = index, l = this.items.length; i < l; i++) {
-	                    var id = this.items[i][this.idProp];
-	                    this.keys[id] = i;
-	                }
-	                // repair length attribute
-	                this.length = this.items.length;
-
-	                if (silent !== true) {
-	                    this.trigger('remove', {
-	                        removed: removedItem
-	                    });
-
-	                    this.trigger('change', {
-	                        removed: removedItem
-	                    });
-	                }
-	            },
-
-	            /**
-	             * Iterates through all items and calls the given callback for each one
-	             *
-	             * @param {Function} callback
-	             *      The callback which is executed for eachh item
-	             *      It is called with the following arguments:
-	             *      <ul>
-	             *          <li>The current item</li>
-	             *          <li>The index of current item</li>
-	             *          <li>The arguments passed to the <code>Collectum.each</code></li>
-	             *      </ul>
-	             *
-	             * @param {Object} scope
-	             *      Optional. The execution scope for the callback function
-	             *
-	             * @param {Array} args
-	             *      Optional. A set of additional arguments which will be passed to the callback
-	             */
-	            each: function (callback, scope, args) {
-	                alchemy.each(this.items, callback, scope, args);
-	            },
-
-	            /**
-	             * Starts observing a stored item to proxy the item events
-	             * @private
-	             */
-	            startObservingItem: function (item) {
-	                this.observe(item, '*', this.itemEventHandler, this);
-	            },
-
-	            /**
-	             * Stops the observing (e.g. after removing this item)
-	             * @private
-	             */
-	            stopObservingItem: function (item) {
-	                if (this.isObservable(item)) {
-	                    item.off(null, null, this);
-	                }
-	            },
-
-	            /**
-	             * The handler method for all item events
-	             * @private
-	             */
-	            itemEventHandler: function (data, event) {
-	                data = data || {};
-	                data.source = event.source;
-	                this.trigger(event.name, data);
-	            }
-	        }
-	    });
-	}());
-
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function () {
-	    'use strict';
-
-	    var alchemy = __webpack_require__(219);
-
-	    /**
-	     * This is an immutable data object
-	     *
-	     * @class
-	     * @name alchemy.core.Immutatio
-	     * @extends alchemy.core.MateriaPrima
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.Immutatio',
-	        alias: 'Immutatio',
-	        extend: 'alchemy.core.MateriaPrima',
-	        overrides: function (_super) {
-
-	            /**
-	             * Helper to determine if a given object is an immutable
-	             * @private
-	             */
-	            function isImmutable(obj) {
-	                return obj && (obj instanceof Value || obj instanceof Struct || obj instanceof List);
-	            }
-
-	            /**
-	             * Helper to create an immutable data object depending on the type of the input
-	             * @private
-	             */
-	            function createSub(value, computed) {
-	                if (alchemy.isArray(value)) {
-	                    return new List(value, computed);
-	                } else if (alchemy.isObject(value)) {
-	                    if (isImmutable(value)) {
-	                        return value;
-	                    } else if (value.constructor === Object) {
-	                        return new Struct(value, computed);
-	                    }
-	                    return new Value(value, computed);
-	                }
-	                return new Value(value, computed);
-	            }
-
-	            /**
-	             * The abstract base class for immutable values
-	             *
-	             * @class Abstract
-	             * @private
-	             */
-	            function Abstract(value, data, computed) {
-	                this.value = value;
-	                this.data = data && alchemy.each(data, function (item) {
-	                    return createSub(item);
-	                });
-	                this.computedProps = computed;
-	            }
-
-	            Abstract.prototype.val = function (key) {
-	                if (typeof key !== 'undefined') {
-	                    var sub = this.sub(key);
-	                    if (sub) {
-	                        return sub.val();
-	                    }
-
-	                    var fn = this.computedProps && this.computedProps[key];
-	                    if (fn) {
-	                        return fn.call(this, this.val());
-	                    }
-
-	                    return null;
-	                }
-
-	                if (this.value === null) {
-	                    this.value = alchemy.each(this.data, function (sub) {
-	                        return sub.val();
-	                    });
-	                }
-	                return this.value;
-	            };
-
-	            Abstract.prototype.set = alchemy.emptyFn;
-
-	            Abstract.prototype.sub = function (key) {
-	                return (this.data && this.data[key]) || null;
-	            };
-
-	            Abstract.prototype.each = function (fn, scope, more) {
-	                return this.set(alchemy.each(this.data, fn, scope, more));
-	            };
-
-	            /** @protected */
-	            Abstract.prototype.setSubValue = function (val, key) {
-	                var currVal = this.sub(key);
-	                if (currVal) {
-	                    // update existing key
-	                    var newVal = currVal.set(val);
-	                    if (newVal !== currVal) {
-	                        return newVal;
-	                    }
-	                } else {
-	                    // add new key/value
-	                    return createSub(val);
-	                }
-	            };
-
-	            /**
-	             * A simple immutable value
-	             *
-	             * @class Value
-	             * @extends Abstract
-	             * @private
-	             */
-	            function Value(val, computed) {
-	                Abstract.call(this, val, null, computed);
-	            }
-	            Value.prototype = new Abstract();
-
-	            Value.prototype.set = function _setSimpleValue(val) {
-	                if (isImmutable(val)) {
-	                    return val;
-	                }
-	                if (val === this.value) {
-	                    return this;
-	                }
-	                return new Value(val, this.computedProps);
-	            };
-
-	            /**
-	             * An immutable key-value store
-	             *
-	             * @class Struct
-	             * @extends Abstract
-	             * @private
-	             */
-	            function Struct(data, computed) {
-	                Abstract.call(this, null, data, computed);
-	            }
-	            Struct.prototype = new Abstract();
-
-	            Struct.prototype.set = function _setComplexValue(key, val) {
-	                if (alchemy.isString(key) && typeof val !== 'undefined') {
-	                    // called with key and value, e.g. .set('foo', 'bar');
-	                    var newSub = this.setSubValue(val, key);
-	                    if (newSub) {
-	                        var newData = alchemy.mix({}, this.data);
-	                        newData[key] = newSub;
-	                        return new Struct(newData, this.computedProps);
-	                    }
-	                    return this;
-	                }
-
-	                if (isImmutable(key)) {
-	                    return key;
-	                }
-
-	                if (alchemy.isArray(key)) {
-	                    // called with array, e.g. .set([1, 2, ...]);
-	                    return new List(key, this.computedProps);
-	                }
-
-	                if (alchemy.isObject(key) && key.constructor === Object) {
-	                    // called with raw js object, e.g. .set({foo: 'bar'});
-	                    var changedSubs = alchemy.each(key, this.setSubValue, this);
-	                    if (changedSubs && Object.keys(changedSubs).length > 0) {
-	                        return new Struct(alchemy.mix({}, this.data, changedSubs), this.computedProps);
-	                    }
-	                    return this;
-	                }
-
-	                if (typeof key !== 'undefined') {
-	                    return new Value(key, this.computedProps);
-	                }
-
-	                return this;
-	            };
-
-	            /**
-	             * An immutable list/array
-	             *
-	             * @class List
-	             * @extends Abstract
-	             * @private
-	             */
-	            function List(data, computed) {
-	                Abstract.call(this, null, data, computed);
-	            }
-	            List.prototype = new Abstract();
-
-	            List.prototype.set = function (index, value) {
-	                if (typeof index === 'undefined') {
-	                    return this;
-	                }
-
-	                if (typeof value !== 'undefined') {
-	                    // called with key and value, e.g. .set('foo', 'bar');
-	                    if (index >= 0) {
-	                        var newSub = this.setSubValue(value, index);
-	                        if (newSub) {
-	                            var newData = [].concat(this.data);
-	                            newData[index] = newSub;
-	                            return new List(newData);
-	                        }
-	                    }
-
-	                    return this; // non-numeric index
-	                }
-
-	                // called with single argument
-	                value = index;
-
-	                if (isImmutable(value)) {
-	                    return value;
-	                }
-
-	                if (alchemy.isArray(value)) {
-	                    return this.updateList(value);
-	                }
-
-	                if (alchemy.isObject(value) && value.constructor === Object) {
-	                    return new Struct(value, this.computedProps);
-	                }
-
-	                return new Value(value, this.computedProps);
-	            };
-
-
-	            /** @private */
-	            List.prototype.updateList = function (newData) {
-	                var newList = [];
-	                var changed = newData.length !== this.data.length;
-
-	                for (var i = 0, l = newData.length;  i < l; i++) {
-	                    var newSubData = newData[i];
-	                    var newSub = this.setSubValue(newSubData, i);
-
-	                    if (newSub) {
-	                        changed = true;
-	                        newList.push(newSub);
-	                    } else {
-	                        newList.push(this.data[i]);
-	                    }
-	                }
-	                if (changed) {
-	                    return new List(newList, this.computedProps);
-	                }
-	                return this;
-	            };
-
-	            return {
-	                /** @lends alchemy.core.Immutatio.prototype */
-
-	                makeImmutable: function (data, computed) {
-	                    return createSub(data, computed);
-	                },
-
-	                find: function (immutable, selector) {
-	                    if (!immutable) {
-	                        return null;
-	                    }
-
-	                    if (typeof selector === 'string') {
-	                        var keys = selector.split('.');
-	                        for (var i = 0, l = keys.length; i < l; i++) {
-	                            immutable = immutable.sub(keys[i]);
-	                        }
-	                    }
-
-	                    return immutable;
-	                }
-	            };
-	        }
-	    });
-	}());
-
-
-/***/ },
-/* 223 */
-/***/ function(module, exports) {
-
-	module.exports = function (alchemy) {
-	    'use strict';
-
-	    /**
-	     * A lean render engine
-	     *
-	     * The implementation was inspired by John Resig's Micro-Templating
-	     * (see http://ejohn.org/blog/javascript-micro-templating/) but I had
-	     * to change a few things:
-	     *  - "with(...)" does not work in strict mode
-	     *  - Resig's method works in browser only (document.getElementById ...)
-	     *  - It is more readable (i.e. He uses split and join to simulate a replace
-	     *  because it may be faster. Well, it might be but it is also a very
-	     *  good example why not to optimize.)
-	     *
-	     * @class alchemy.core.Maleficus
-	     * @extends alchemy.core.MateriaPrima
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.Maleficus',
-	        alias: 'Maleficus',
-	    }, {
-	        /** @lends alchemy.core.Maleficus.prototype */
-
-	        /**
-	         * Renders the template with the given date
-	         *
-	         * @param {String} template Well, the template...
-	         *      You can reference values by <code>data.key</code>
-	         * @param {Object} data The values for the template
-	         * @return {String} The replaced template
-	         */
-	        render: function (template, data) {
-	            var cache = this.cache || {};
-	            var key = template.replace(/[\s\t\n]/g, '');
-	            var tmplFn = cache[key];
-	            var str;
-	            var scopeVars;
-
-	            if (!tmplFn) {
-	                str = template.replace(/\/\/(.*)$/mg, '') // remove line comments
-	                              .replace(/[\s\t\n]/g, ' ')
-	                              .replace(/\/\*(.*?)\*\//g, '') // remove block comments
-	                              .replace(/"/g, '\\"') // escape double quotes
-	                              .replace(/<\$=(.*?)\$>/g, '", $1, "')
-	                              .replace(/\$>/g, '; p.push("')
-	                              .replace(/<\$/g, '"); ');
-
-	                // create the set of predefined closure scope variable for the template function
-	                scopeVars = {
-	                    alchemy: alchemy,
-	                    tmplFn: undefined
-	                };
-	                // create the template function
-	                tmplFn = beEvil([
-	                    'tmplFn = function (data) {',
-	                    '  var p = [];',
-	                    '  p.push("', str, '");',
-	                    '  return p.join("");',
-	                    '};'
-	                ].join(''), scopeVars).tmplFn;
-	                // and finally cache the new function for further uses
-	                cache[key] = tmplFn;
-	                this.cache = cache;
-	            }
-
-	            return tmplFn(data);
-	        },
-	    });
-
-	    /** @private */
-	    function beEvil(expr, vars) {
-	        var returnVars = {};
-
-	        for (var key in vars) {
-	            expr = [
-	                'var ',  key,  ' = vars.', key, ';',
-	                expr,
-	                'returnVars.', key, ' = ', key, ';'
-	            ].join('');
-	        }
-
-	        /*jshint evil: true*/
-	        eval(expr);
-	        /*jshint evil: false*/
-
-	        return returnVars;
-	    }
-	};
-
-
-/***/ },
-/* 224 */
-/***/ function(module, exports) {
-
-	module.exports = function (alchemy) {
-	    'use strict';
-
-	    /**
-	     * The base of every potion. It provides:
-	     * - a convenient constructor method that applies given properties automatically
-	     * - a method to create intances of a potion (see {@link #brew})
-	     * - a way to read and write meta attributes
-	     * - the possibility to add ingredients
-	     *
-	     * @class
-	     * @name alchemy.core.MateriaPrima
-	     * @extends Object
-	     * @alias MateriaPrima
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.MateriaPrima',
-	        alias: 'MateriaPrima',
-	        extend: Object.prototype,
-	        overrides: {
-	            /** @lends alchemy.core.MateriaPrima */
-
-	            /**
-	             * @constructs
-	             */
-	            constructor: function (cfg) {
-	                // apply configuration
-	                cfg = cfg || {};
-	                cfg.id = cfg.id || alchemy.id();
-	                alchemy.override(this, cfg);
-	            },
-
-	            /**
-	             * initializes the instance;
-	             * to be overridden
-	             * @function
-	             * @protected
-	             */
-	            init: alchemy.emptyFn,
-
-	            /**
-	             * Reads and writes the value of a meta attribute
-	             *
-	             * @param {String} key The identifier of the attribute
-	             * @param {Mixed} value Optional; The new value; If ommitted the value will not be changed
-	             * @return {Mixed} The current value of the meta attributes
-	             */
-	            meta: function (key, value) {
-	                return alchemy.meta(this, key, value);
-	            },
-
-	            /**
-	             *
-	             */
-	            // addIngredient: function (key, ingredient) {
-	            //     var ingredients = this.meta('ingredients') || {};
-	            //     if (alchemy.isString(ingredient)) {
-	            //         ingredient = alchemy(ingredient);
-	            //     }
-	            //     // register the new ingredient in the ingredients cache
-	            //     ingredients[key] = ingredient;
-	            //     // add the public functions and properties to the current type
-	            //     ingredient.addActiveSubstances(this, key);
-	            //     // write back cache
-	            //     this.meta('ingredients', ingredients);
-	            // },
-
-	            /**
-	             * Enhances the current prototype with a new ingredient (mixin)
-	             * @function
-	             *
-	             * @param {String} key The key to identify the ingredient
-	             * @param {Object} ingredient The ingredient prototype to be added
-	             * @return {Object} The current potion for chaining
-	             */
-	            addIngredient: (function () {
-	                // helper function to create a method which delegate the call to
-	                // the ingredient
-	                var createFunctionDelegate = function (delegateKey, fnKey) {
-	                    return function () {
-	                        var ingredients = this.meta('ingredients');
-	                        var delegate = ingredients[delegateKey].delegate;
-	                        return delegate[fnKey].apply(delegate, arguments);
-	                    };
-	                };
-
-	                // helper method to create a property description which allows to
-	                // modify the property of the ingredient delegate in the same way
-	                // it would modify the potion itself
-	                var createPropertyDelegate = function (delegateKey, propKey) {
-	                    return {
-	                        get: function () {
-	                            var ingredients = this.meta('ingredients');
-	                            var delegate = ingredients[delegateKey].delegate;
-	                            return delegate[propKey];
-	                        },
-
-	                        set: function (val) {
-	                            var ingredients = this.meta('ingredients');
-	                            var delegate = ingredients[delegateKey].delegate;
-	                            delegate[propKey] = val;
-	                        },
-	                    };
-	                };
-
-	                return function (key, cfg) {
-	                    if (cfg && !cfg.potion) {
-	                        // allow shortcut
-	                        cfg = {
-	                            potion: cfg
-	                        };
-	                    }
-
-	                    var potion = alchemy.isString(cfg.potion) ? alchemy(cfg.potion) : cfg.potion;
-	                    if (!alchemy.isObject(potion)) {
-	                        // no valid ingredient/name passed -> exit
-	                        return this;
-	                    }
-
-	                    var ingredients = alchemy.mix({}, this.meta('ingredients'));
-	                    var init = cfg.init !== false;
-	                    var delegate = cfg.delegate;
-	                    var publics = cfg.publics || potion.publics || Object.keys(potion);
-
-	                    // register the new ingredient in the ingredients cache
-	                    ingredients[key] = {
-	                        potion: potion,
-	                        delegate: delegate
-	                    };
-
-	                    if (delegate) {
-	                        alchemy.each(publics, function (itemKey) {
-	                            if (alchemy.isFunction(potion[itemKey])) {
-	                                this[itemKey] = createFunctionDelegate(key, itemKey);
-	                            } else {
-	                                alchemy.defineProperty(this, itemKey, createPropertyDelegate(key, itemKey));
-	                            }
-	                        }, this);
-
-	                        if (init) {
-	                            ingredients[key].delegate = potion.brew();
-	                        }
-
-	                    } else {
-	                        alchemy.each(publics, function (itemKey) {
-	                            this[itemKey] = potion[itemKey];
-	                        }, this);
-
-	                        if (init && alchemy.isFunction(potion.init)) {
-	                            potion.init.call(this);
-	                        }
-	                    }
-
-	                    //  and write it back
-	                    this.meta('ingredients', ingredients);
-	                    return this;
-	                };
-	            }()),
-
-	            /**
-	             * Creates a new instance of the current prototype; every parameter
-	             * will be passed to the respective constructor method
-	             *
-	             * @param {Object} cfg The configuration for the new instance
-	             * @return {Object} The new instance
-	             */
-	            brew: function (cfg) {
-	                var newObj;
-	                var ingredients = this.meta('ingredients');
-	                var newIngredients;
-	                var Ctor;
-
-	                if (this === this.constructor.prototype) {
-	                    // you are creating an instance of the potion prototype (this
-	                    // should be true in most cases)
-	                    Ctor = this.constructor;
-	                } else {
-	                    // you are creating an intance of an intance; the constuctor-
-	                    // prototype-handling is necessarry so the javascript interpreter
-	                    // will treat the instance as if created with "new Constructor"
-	                    // and will optimize the object
-	                    var orgCtor = this.constructor;
-	                    this.constructor = function (cfg) {
-	                        orgCtor.call(this, cfg);
-	                    };
-	                    this.constructor.prototype = this;
-	                    Ctor = this.constructor;
-	                }
-	                newObj = new Ctor(cfg);
-
-	                // add read-only references to the base type
-	                newObj.meta('prototype', this);
-
-	                if (ingredients) {
-	                    newIngredients = {};
-	                    alchemy.each(ingredients, function (ingr, key) {
-	                        var ingrCfg = cfg && (cfg[key] || cfg);
-	                        var potion = ingr.potion;
-
-	                        newIngredients[key] = {
-	                            potion: potion
-	                        };
-
-	                        if (ingr.delegate) {
-	                            // create new delegate instance to avoid conflicts
-	                            newIngredients[key].delegate = ingr.potion.brew(ingrCfg);
-	                        } else if (alchemy.isFunction(potion.init)) {
-	                            // init simple mixin
-	                            potion.init.call(this);
-	                        }
-	                    }, this);
-
-	                    // register the new set of ingredients
-	                    newObj.meta('ingredients', newIngredients);
-	                }
-
-	                // call constructor function to initialize new instance
-	                newObj.init();
-	                return newObj;
-	            },
-
-	            /**
-	             * An anbstract cleanup method for overriding;
-	             * Called when a disposing the potion
-	             * @function
-	             * @protected
-	             * @see alchemy.core.MateriaPrima#dispose
-	             */
-	            finish: alchemy.emptyFn,
-
-	            /**
-	             * The potion destructor; It cleans all references the potion has to other objects
-	             * NOTITCE:
-	             * - In general the instance is not usable anymore after beeing disposed
-	             * - Do not for get to cut all references to the potion itself so garbage
-	             *   collector can do its work
-	             * - It is recommended to override {@link finish} to do custom clean up
-	             * @function
-	             * @see alchemy.core.MateriaPrima#finish
-	             */
-	            dispose: (function () {
-	                // helper method to clean a single ingredient
-	                var disposeIngredient = function (ingr) {
-	                    if (alchemy.isObject(ingr.delegate)) {
-	                        if (alchemy.isFunction(ingr.delegate.dispose)) {
-	                            ingr.delegate.dispose();
-	                        }
-	                        ingr.delegate = null;
-	                    } else if (alchemy.isFunction(ingr.potion.finish)) {
-	                        // clean up for generic ingrediendts
-	                        ingr.potion.finish.call(this);
-	                    }
-	                    ingr.potion = null;
-	                };
-
-	                return function () {
-	                    // clean up ingredients
-	                    var ingredients = this.meta('ingredients');
-	                    if (ingredients) {
-	                        alchemy.each(ingredients, disposeIngredient, this);
-	                        this.meta('ingredients', null);
-	                    }
-	                    // cut reference to prototype
-	                    this.meta('prototype', null);
-	                    // call method for custom clean up
-	                    this.finish();
-	                };
-	            }()),
-	        }
-	    });
-	};
-
-
-/***/ },
-/* 225 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	(function () {
-	    'use strict';
-
-	    var alchemy = __webpack_require__(219);
-
-	    /**
-	     * A potion to represent data (a model)
-	     *
-	     * @class
-	     * @name alchemy.core.Modelum
-	     * @extends alchemy.core.Oculus
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.Modelum',
-	        alias: 'Modelum',
-	        extend: 'alchemy.core.Observari',
-	        overrides: {
-	            /** @lends alchemy.core.Modelum */
-
-	            /**
-	             * The storage object for the data values.
-	             * Do not modify this object after creation use {@link #get} and
-	             * {@link set}
-	             *
-	             * @property data
-	             * @type undefined
-	             * @private
-	             */
-	            data: undefined,
-
-	            init: function () {
-	                this.data = this.data || {};
-	            },
-
-	            /**
-	             * Returns the stored values to a given key
-	             *
-	             * @param {String} key
-	             *      The attributebute key;
-	             *
-	             * @return Mixed
-	             *      The store value for the given key
-	             */
-	            get: function (key) {
-	                return this.data[key];
-	            },
-
-	            /**
-	             * Returns the stored data of all attributes
-	             * This method returns always an object
-	             *
-	             * @return Object
-	             *      The data object
-	             */
-	            toData: function () {
-	                return alchemy.mix({}, this.data);
-	            },
-
-	            /**
-	             * Set the data values
-	             * If the data changed an "change" is fired
-	             *
-	             * @param {Mixed} key
-	             *      Either the name of an attribute to be changed
-	             *      or an object with new values
-	             *
-	             * @param {Mixed} value
-	             *      The new data value (only if first parameter is an
-	             *      actual key)
-	             */
-	            set: (function () {
-	                var eventData = {};
-	                var changed;
-	                var set = function (value, key) {
-	                    var oldVal = this.data[key];
-	                    if (oldVal !== value) {
-	                        // notice that a single change has been made
-	                        changed = true;
-	                        // update the data store
-	                        this.data[key] = value;
-	                        // trigger an event for the change
-	                        eventData.model = this;
-	                        eventData.oldVal = oldVal;
-	                        eventData.newVal = value;
-	                        this.trigger('change.' + key, eventData);
-	                    }
-	                };
-
-	                return function (key, value) {
-	                    changed = false;
-	                    if (alchemy.isObject(key)) {
-	                        alchemy.each(key, set, this);
-	                    } else {
-	                        set.call(this, value, key);
-	                    }
-	                    if (changed) {
-	                        this.trigger('change', {
-	                            model: this
-	                        });
-	                    }
-	                };
-	            }())
-	        }
-	    });
-	}());
-
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function () {
-	    'use strict';
-
-	    var alchemy = __webpack_require__(219);
-
-	    /**
-	     * The basic mixin for an event emitter which can be observe using event
-	     * handlers ("observari" is a passiv form of "observare", latin "to observe")
-	     *
-	     * @class
-	     * @name alchemy.core.Observari
-	     * @extends alchemy.core.Ingredient
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.Observari',
-	        alias: 'Observari',
-	        overrides: function () {
-	            /** @lends alchemy.core.Observari */
-
-	            //
-	            //
-	            // private helper
-	            //
-	            //
-
-	            /**
-	             * Returns an object with meta data for the given event type
-	             * @private
-	             */
-	            function getEventObject(observable, eventName) {
-	                observable.eventObj = observable.eventObj || {};
-	                if (!observable.eventObj[eventName]) {
-	                    observable.eventObj[eventName] = {
-	                        name: eventName,
-	                        source: observable
-	                    };
-	                }
-	                return observable.eventObj[eventName];
-	            }
-
-	            /**
-	             * Purges the list of event handlers from the given listeners
-	             * @private
-	             */
-	            function cleanlistenerList(observable, event, fn, scope) {
-	                var oldList = (observable.events && observable.events[event]) || [];
-	                var newList = [];
-	                var match; // true if the listener (fn, scope) is registered for the event
-	                var listener = oldList.pop();
-
-	                while (listener) {
-	                    match = (!fn || fn === listener.fn) && (!scope || scope === listener.scope);
-
-	                    if (!match) {
-	                        newList.push(listener);
-	                    } else {
-	                        listener.fn = null;
-	                        listener.scope = null;
-	                    }
-	                    listener = oldList.pop();
-	                }
-	                if (newList.length > 0) {
-	                    observable.events[event] = newList;
-	                } else {
-	                    delete observable.events[event];
-	                }
-	            }
-
-	            return {
-	                /** @lends alchemy.core.Observari.prototype */
-
-	                publics: ['on', 'once', 'off', 'trigger'],
-
-	                /**
-	                 * The initial set of events;
-	                 * The configuration object has the following form:
-	                 * <pre><code>
-	                 * {
-	                 *      event1: {
-	                 *          fn: {Function} // the handler function
-	                 *          scope: {Object} // the execution scope of the handler
-	                 *      },
-	                 *      event2: {
-	                 *          ...
-	                 *      },
-	                 *      ...
-	                 * }
-	                 * </code></pre>
-	                 *
-	                 * @property events
-	                 * @type Object
-	                 */
-	                events: undefined,
-
-	                /**
-	                 * Triggers an event
-	                 * @function
-	                 *
-	                 * @param {String} eventName The event name/type
-	                 * @param {Object} data The event data (can be anything)
-	                 */
-	                trigger: (function () {
-	                    var processListener = function (listener, index, data, eventObj) {
-	                        listener.fn.call(listener.scope, data, eventObj);
-	                    };
-
-	                    return function (eventName, data) {
-	                        var listeners = this.events && alchemy.mix([], this.events[eventName]);
-	                        var eventObj = getEventObject(this, eventName);
-	                        var args = [data, eventObj];
-
-	                        // notify listener which are registered for the given event type
-	                        alchemy.each(listeners, processListener, this, args);
-
-	                        // notify listener which are registered for all events
-	                        listeners = this.events && this.events['*'];
-	                        alchemy.each(listeners, processListener, this, args);
-	                    };
-	                }()),
-
-
-	                /**
-	                 * adds a listener for to an event
-	                 *
-	                 * @param {String} event
-	                 *      the event name
-	                 *
-	                 * @param {Function} handler
-	                 *      the event handler method
-	                 *
-	                 * @param {Object} scope
-	                 *      the execution scope for the event handler
-	                 */
-	                on: function (event, handler, scope) {
-	                    this.events = this.events || {};
-	                    this.events[event] = this.events[event] || [];
-	                    this.events[event].push({
-	                        fn: handler,
-	                        scope: scope
-	                    });
-	                },
-
-	                /**
-	                 * Adds a one-time listener for to an event; This listener will
-	                 * be removed after the the first execution
-	                 *
-	                 * @param {String} eventName
-	                 *      the event name
-	                 *
-	                 * @param {Function} handler
-	                 *      the event handler method
-	                 *
-	                 * @param {Object} scope
-	                 *      the execution scope for the event handler
-	                 */
-	                once: function (eventName, handler, scope) {
-	                    var wrapper = function (data, event) {
-	                        this.off(eventName, wrapper, this);
-	                        handler.call(scope, data, event);
-	                    };
-	                    this.on(eventName, wrapper, this);
-	                },
-
-	                /**
-	                 * removes a listener for from an event
-	                 *
-	                 * @param {String} event
-	                 *      the event name
-	                 *
-	                 * @param {Function} handler
-	                 *      the event handler method
-	                 *
-	                 * @param {Object} scope
-	                 *      the execution scope for the event handler
-	                 */
-	                off: function (event, handler, scope) {
-	                    if (event) {
-	                        cleanlistenerList(this, event, handler, scope);
-	                    } else {
-	                        alchemy.each(this.events, function (eventListner, eventName) {
-	                            cleanlistenerList(this, eventName, handler, scope);
-	                        }, this);
-	                    }
-	                },
-
-	                /** @protected */
-	                finish: function () {
-	                    // remove all listeners
-	                    this.off();
-
-	                    // cut circle references form the eventObj
-	                    alchemy.each(this.eventObj, function (item) {
-	                        item.name = null;
-	                        item.source = null;
-	                    });
-	                    this.eventObj = null;
-	                },
-
-	            };
-	        }
-	    });
-	}());
-
-
-/***/ },
-/* 227 */
-/***/ function(module, exports) {
-
-	module.exports = function (alchemy) {
-	    'use strict';
-
-	    /**
-	     * This is a an observable potion that also allows observing other
-	     * potions. It can remove its events automatically
-	     *
-	     * @class
-	     * @name alchemy.core.Oculus
-	     * @extends alchemy.core.MateriaPrima
-	     */
-	    alchemy.formula.add({
-	        name: 'alchemy.core.Oculus',
-	        alias: 'Oculus',
-	        extend: 'alchemy.core.MateriaPrima',
-
-	    }, function (_super) {
-	        return {
-	            /** @lends alchemy.core.Oculus */
-
-	            publics: ['observe', 'isObservable'],
-
-	            /**
-	             * Observes the event of a given object
-	             *
-	             * @param {Object} obj The object instance to observe
-	             * @param {String} event The event to observe
-	             * @param {Function} fn The handler method
-	             * @param {Object} scope The execution scope for the handler method
-	             */
-	            observe: function (obj, event, fn, scope) {
-	                if (this.isObservable(obj)) {
-	                    this.observed = this.observed || [];
-	                    this.observed.push({
-	                        obj: obj,
-	                        event: event,
-	                        fn: fn,
-	                        scope: scope
-	                    });
-	                    obj.on(event, fn, scope);
-	                }
-	            },
-
-	            /**
-	             * Determines if the given object can be observed, i.e. the given
-	             * object must provide a method "on" to register an event handler
-	             * and a method named "off" to remove the handler
-	             *
-	             * @param {Object} obj The object which should be observed
-	             * @return {Boolean} <code>true</code> if and only if the given
-	             *      Object can be observed using the oculus
-	             */
-	            isObservable: function (obj) {
-	                return obj && alchemy.isFunction(obj.on) && alchemy.isFunction(obj.off);
-	            },
-
-	            /**
-	             * Disposes instance;
-	             * Override superclass to remove registered handler automatically
-	             */
-	            dispose: function () {
-	                if (this.observed) {
-	                    alchemy.each(this.observed, function (cfg) {
-	                        cfg.obj.off(cfg.event, cfg.fn, cfg.scope);
-	                    }, this);
-
-	                    this.observed = null;
-	                }
-
-	                _super.dispose.call(this);
-	            }
-	        };
-	    });
-	};
-
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 	exports.MAKE_NODE = exports.FETCH_NODES = undefined;
 	exports.fetchNodes = fetchNodes;
 	exports.makeNode = makeNode;
 
-	var _axios = __webpack_require__(229);
+	var _axios = __webpack_require__(219);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -26703,8 +23900,7 @@
 	}
 
 	function makeNode(value) {
-	  var request = _axios2.default.post(URL, value);
-	  console.log('make node????');
+	  var request = _axios2.default.post('/api/node', value);
 	  return {
 	    type: MAKE_NODE,
 	    payload: request
@@ -26712,21 +23908,21 @@
 	}
 
 /***/ },
-/* 229 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(230);
+	module.exports = __webpack_require__(220);
 
 /***/ },
-/* 230 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
-	var bind = __webpack_require__(232);
-	var Axios = __webpack_require__(233);
-	var defaults = __webpack_require__(234);
+	var utils = __webpack_require__(221);
+	var bind = __webpack_require__(222);
+	var Axios = __webpack_require__(223);
+	var defaults = __webpack_require__(224);
 
 	/**
 	 * Create an instance of Axios
@@ -26759,15 +23955,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(251);
-	axios.CancelToken = __webpack_require__(252);
-	axios.isCancel = __webpack_require__(248);
+	axios.Cancel = __webpack_require__(241);
+	axios.CancelToken = __webpack_require__(242);
+	axios.isCancel = __webpack_require__(238);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(253);
+	axios.spread = __webpack_require__(243);
 
 	module.exports = axios;
 
@@ -26776,12 +23972,12 @@
 
 
 /***/ },
-/* 231 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(232);
+	var bind = __webpack_require__(222);
 
 	/*global toString:true*/
 
@@ -27081,7 +24277,7 @@
 
 
 /***/ },
-/* 232 */
+/* 222 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27098,17 +24294,17 @@
 
 
 /***/ },
-/* 233 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(234);
-	var utils = __webpack_require__(231);
-	var InterceptorManager = __webpack_require__(245);
-	var dispatchRequest = __webpack_require__(246);
-	var isAbsoluteURL = __webpack_require__(249);
-	var combineURLs = __webpack_require__(250);
+	var defaults = __webpack_require__(224);
+	var utils = __webpack_require__(221);
+	var InterceptorManager = __webpack_require__(235);
+	var dispatchRequest = __webpack_require__(236);
+	var isAbsoluteURL = __webpack_require__(239);
+	var combineURLs = __webpack_require__(240);
 
 	/**
 	 * Create a new instance of Axios
@@ -27189,13 +24385,13 @@
 
 
 /***/ },
-/* 234 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(231);
-	var normalizeHeaderName = __webpack_require__(235);
+	var utils = __webpack_require__(221);
+	var normalizeHeaderName = __webpack_require__(225);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -27212,10 +24408,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(236);
+	    adapter = __webpack_require__(226);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(236);
+	    adapter = __webpack_require__(226);
 	  }
 	  return adapter;
 	}
@@ -27289,12 +24485,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 235 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -27307,18 +24503,18 @@
 
 
 /***/ },
-/* 236 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(231);
-	var settle = __webpack_require__(237);
-	var buildURL = __webpack_require__(240);
-	var parseHeaders = __webpack_require__(241);
-	var isURLSameOrigin = __webpack_require__(242);
-	var createError = __webpack_require__(238);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(243);
+	var utils = __webpack_require__(221);
+	var settle = __webpack_require__(227);
+	var buildURL = __webpack_require__(230);
+	var parseHeaders = __webpack_require__(231);
+	var isURLSameOrigin = __webpack_require__(232);
+	var createError = __webpack_require__(228);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(233);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -27414,7 +24610,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(244);
+	      var cookies = __webpack_require__(234);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -27491,12 +24687,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 237 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(238);
+	var createError = __webpack_require__(228);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -27522,12 +24718,12 @@
 
 
 /***/ },
-/* 238 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(239);
+	var enhanceError = __webpack_require__(229);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -27545,7 +24741,7 @@
 
 
 /***/ },
-/* 239 */
+/* 229 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27570,12 +24766,12 @@
 
 
 /***/ },
-/* 240 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -27644,12 +24840,12 @@
 
 
 /***/ },
-/* 241 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	/**
 	 * Parse headers into an object
@@ -27687,12 +24883,12 @@
 
 
 /***/ },
-/* 242 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -27761,7 +24957,7 @@
 
 
 /***/ },
-/* 243 */
+/* 233 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27803,12 +24999,12 @@
 
 
 /***/ },
-/* 244 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -27862,12 +25058,12 @@
 
 
 /***/ },
-/* 245 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -27920,15 +25116,15 @@
 
 
 /***/ },
-/* 246 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
-	var transformData = __webpack_require__(247);
-	var isCancel = __webpack_require__(248);
-	var defaults = __webpack_require__(234);
+	var utils = __webpack_require__(221);
+	var transformData = __webpack_require__(237);
+	var isCancel = __webpack_require__(238);
+	var defaults = __webpack_require__(224);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -28005,12 +25201,12 @@
 
 
 /***/ },
-/* 247 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(231);
+	var utils = __webpack_require__(221);
 
 	/**
 	 * Transform the data for a request or a response
@@ -28031,7 +25227,7 @@
 
 
 /***/ },
-/* 248 */
+/* 238 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28042,7 +25238,7 @@
 
 
 /***/ },
-/* 249 */
+/* 239 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28062,7 +25258,7 @@
 
 
 /***/ },
-/* 250 */
+/* 240 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28080,7 +25276,7 @@
 
 
 /***/ },
-/* 251 */
+/* 241 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28105,12 +25301,12 @@
 
 
 /***/ },
-/* 252 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(251);
+	var Cancel = __webpack_require__(241);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -28168,7 +25364,7 @@
 
 
 /***/ },
-/* 253 */
+/* 243 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28201,6 +25397,130 @@
 
 
 /***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(180);
+
+	var _index = __webpack_require__(218);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // (hopefully) can get Alchemy working to display graph
+
+
+	var NodesShow = function (_Component) {
+	  _inherits(NodesShow, _Component);
+
+	  function NodesShow() {
+	    _classCallCheck(this, NodesShow);
+
+	    return _possibleConstructorReturn(this, (NodesShow.__proto__ || Object.getPrototypeOf(NodesShow)).apply(this, arguments));
+	  }
+
+	  _createClass(NodesShow, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.fetchNodes();
+	      console.log('this.props', this.props);
+	    }
+	  }, {
+	    key: 'getData',
+	    value: function getData() {
+	      this.props.fetchNodes();
+	    }
+	  }, {
+	    key: 'renderNodes',
+	    value: function renderNodes(nodes) {
+	      console.log('inside renderNodes, checking out props', nodes.nodes.records);
+	      var nodes = JSON.stringify(nodes.nodes.records);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        nodes
+	      );
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      console.log('should appear when data is received', nextProps);
+	      this.renderNodes(nextProps);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      if (!this.props) {
+	        return _react2.default.createElement('div', null);
+	      }
+	      console.log('here are the props', this.props);
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.getData.bind(this) },
+	          'Show Nodes'
+	        ),
+	        _react2.default.createElement(
+	          'table',
+	          null,
+	          _react2.default.createElement(
+	            'thead',
+	            null,
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Nodes'
+	              )
+	            )
+	          )
+	        ),
+	        this.props.length === 0 ? '' : this.renderNodes(this.props)
+	      );
+	    }
+	  }]);
+
+	  return NodesShow;
+	}(_react.Component);
+
+	function mapStateToProps(state) {
+	  return {
+	    nodes: state.nodes.nodes
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchNodes: _index.fetchNodes })(NodesShow);
+
+/***/ },
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
 /* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28249,7 +25569,7 @@
 	  }
 	};
 
-	var _index = __webpack_require__(228);
+	var _index = __webpack_require__(218);
 
 	var INITIAL_STATE = { nodes: [] };
 

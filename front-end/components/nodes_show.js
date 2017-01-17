@@ -1,7 +1,6 @@
 // (hopefully) can get Alchemy working to display graph
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Alchemy from 'alchemy.js';
 import {fetchNodes} from '../actions/index';
 
 class NodesShow extends Component {

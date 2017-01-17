@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "dev": "nodemon --ignore node_modules server.js && webpack -w",
     "test": "test"
   },
   "repository": {
