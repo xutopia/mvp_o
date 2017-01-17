@@ -1,6 +1,6 @@
 // here are the reducers that update global state
 import {FETCH_NODES} from '../actions/index';
-const INITIAL_STATE = {nodes: null};
+const INITIAL_STATE = {nodes: []};
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {

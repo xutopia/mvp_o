@@ -7,14 +7,24 @@ import {fetchNodes} from '../actions/index';
 class NodesShow extends Component {
   componentWillMount() {
     this.props.fetchNodes();
+    console.log('this.props', this.props);
   }
 
   getData() {
     this.props.fetchNodes();
   }
 
-  componentWillReceiveProps() {
-    console.log('should appear when data is received');
+  renderNodes(nodes) {
+    console.log('inside renderNodes, checking out props', nodes.nodes.records)
+    var nodes = JSON.stringify(nodes.nodes.records);
+    return (
+      <div>{nodes}</div>
+    );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('should appear when data is received', nextProps);
+    this.renderNodes(nextProps);
   }
 
   render() {
@@ -26,6 +36,16 @@ class NodesShow extends Component {
     return (
       <div>
         <button onClick={this.getData.bind(this)}>Show Nodes</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Nodes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.length === 0 ? '' : this.renderNodes(this.props)}
+            </tbody>
+          </table>
       </div>
     )
   }
