@@ -7,7 +7,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon --ignore node_modules server.js & webpack -w",
+    "start": "nodemon --ignore node_modules server.js && webpack -w",
     "test": "test"
   },
   "repository": {
@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/xutopia/mvp_o#readme",
   "dependencies": {
-    "alchemyjs": "^0.3.1",
     "axios": "^0.15.3",
     "babel-core": "^6.21.0",
     "babel-preset-stage-1": "^6.16.0",
     "body-parser": "^1.15.2",
+    "d3": "^4.4.1",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "express-partials": "^0.3.0",

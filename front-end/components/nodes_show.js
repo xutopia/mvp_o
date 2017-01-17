@@ -1,7 +1,7 @@
 // (hopefully) can get Alchemy working to display graph
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Alchemy from 'alchemy';
+import Alchemy from 'alchemy.js';
 import {fetchNodes} from '../actions/index';
 
 class NodesShow extends Component {
@@ -11,6 +11,10 @@ class NodesShow extends Component {
 
   getData() {
     this.props.fetchNodes();
+  }
+
+  componentWillReceiveProps() {
+    console.log('should appear when data is received');
   }
 
   render() {
