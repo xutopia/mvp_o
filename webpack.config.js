@@ -1,18 +1,17 @@
+var Path = require('path');
+
 module.exports = {
-  entry: [
-    './front-end/index.js'
-  ],
+  entry: './front-end/index.js',
   output: {
-    path: __dirname,
-    publicPath: '/front-end/',
+    path: Path.join(__dirname, './front-end/'),
     filename: 'bundle.js'
   },
-  modules: {
+  module: {
     loaders: [{
       exclude: /node_modules/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
-        presets: ['react', 'es2015', 'stage-1']
+        presets: ['react', 'es2015', 'stage-0']
       }
     }]
   },
