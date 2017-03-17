@@ -1,4 +1,4 @@
-//THE BEGINNING OF LIFE!
+require('dotenv').config();
 var express = require('express');
 var Path = require('path');
 var util = require('./server-utility/request-handlers');

@@ -62,11 +62,11 @@
 
 	var _redux = __webpack_require__(191);
 
-	var _reducers = __webpack_require__(254);
+	var _reducers = __webpack_require__(245);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _reduxPromise = __webpack_require__(256);
+	var _reduxPromise = __webpack_require__(247);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
@@ -25512,16 +25512,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchNodes: _index.fetchNodes })(NodesShow);
 
 /***/ },
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25532,7 +25523,7 @@
 
 	var _redux = __webpack_require__(191);
 
-	var _reducer_nodes = __webpack_require__(255);
+	var _reducer_nodes = __webpack_require__(246);
 
 	var _reducer_nodes2 = _interopRequireDefault(_reducer_nodes);
 
@@ -25545,7 +25536,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 255 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25574,7 +25565,7 @@
 	var INITIAL_STATE = { nodes: [] };
 
 /***/ },
-/* 256 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25585,7 +25576,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(257);
+	var _fluxStandardAction = __webpack_require__(248);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -25612,7 +25603,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 257 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25623,7 +25614,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(258);
+	var _lodashIsplainobject = __webpack_require__(249);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -25642,7 +25633,7 @@
 	}
 
 /***/ },
-/* 258 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25653,9 +25644,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(259),
-	    isArguments = __webpack_require__(260),
-	    keysIn = __webpack_require__(261);
+	var baseFor = __webpack_require__(250),
+	    isArguments = __webpack_require__(251),
+	    keysIn = __webpack_require__(252);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -25751,7 +25742,7 @@
 
 
 /***/ },
-/* 259 */
+/* 250 */
 /***/ function(module, exports) {
 
 	/**
@@ -25805,7 +25796,7 @@
 
 
 /***/ },
-/* 260 */
+/* 251 */
 /***/ function(module, exports) {
 
 	/**
@@ -26040,7 +26031,7 @@
 
 
 /***/ },
-/* 261 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26051,8 +26042,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(260),
-	    isArray = __webpack_require__(262);
+	var isArguments = __webpack_require__(251),
+	    isArray = __webpack_require__(253);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -26178,7 +26169,7 @@
 
 
 /***/ },
-/* 262 */
+/* 253 */
 /***/ function(module, exports) {
 
 	/**
