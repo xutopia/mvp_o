@@ -9,7 +9,6 @@ var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphe
 
 var getNodes = function(req, res, next) {
   var session = driver.session();
-  console.log('inside the getNodes, driver', session);
   session.run("MATCH (n) RETURN n LIMIT 100")
     .then(function(result) {
       session.close();
