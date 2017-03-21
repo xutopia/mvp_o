@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchNodes} from '../actions/index';
+import * as alchemy from 'alchemyjs';
 
 class NodesShow extends Component {
   componentWillMount() {
@@ -31,10 +32,36 @@ class NodesShow extends Component {
       return (<div></div>)
     }
     console.log('here are the props', this.props);
+    var some_data =
+    {
+      "nodes": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        }
+      ],
+      "edges": [
+        {
+          "source": 1,
+          "target": 2
+        },
+        {
+          "source": 1,
+          "target": 3,
+        }
+      ]
+    };
 
+    alchemy.begin({"dataSource": some_data});
     return (
       <div>
         <button onClick={this.getData.bind(this)}>Show Nodes</button>
+        <div id="alchemy" class="alchemy">something</div>
           <table>
             <thead>
               <tr>

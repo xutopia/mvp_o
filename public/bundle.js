@@ -25416,6 +25416,12 @@
 
 	var _index = __webpack_require__(218);
 
+	var _alchemyjs = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"alchemyjs\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var alchemy = _interopRequireWildcard(_alchemyjs);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25469,7 +25475,24 @@
 	        return _react2.default.createElement('div', null);
 	      }
 	      console.log('here are the props', this.props);
+	      var some_data = {
+	        "nodes": [{
+	          "id": 1
+	        }, {
+	          "id": 2
+	        }, {
+	          "id": 3
+	        }],
+	        "edges": [{
+	          "source": 1,
+	          "target": 2
+	        }, {
+	          "source": 1,
+	          "target": 3
+	        }]
+	      };
 
+	      alchemy.begin({ "dataSource": some_data });
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -25477,6 +25500,11 @@
 	          'button',
 	          { onClick: this.getData.bind(this) },
 	          'Show Nodes'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'alchemy', 'class': 'alchemy' },
+	          'something'
 	        ),
 	        _react2.default.createElement(
 	          'table',
